@@ -12,10 +12,11 @@ import { link as linkStyles } from "@heroui/theme";
 import NextLink from "next/link";
 import clsx from "clsx";
 
+import TabsComponenets from "./Tabs";
+
 import { siteConfig } from "@/config/site";
 import { Logo } from "@/components/icons";
 import ModalSignIn from "@/components/modalSignIn";
-import TabsComponenets from "./Tabs";
 
 export const Navbar = () => {
   return (
@@ -31,8 +32,8 @@ export const Navbar = () => {
             <NavbarMenuToggle />
           </NavbarContent>
           <NextLink className="flex justify-start items-center gap-1" href="/">
-            <Logo />
-            <p className="font-bold text-inherit">Imagen fly</p>
+            {/* <Logo /> */}
+            <p className="font-semibold text-xl text-inherit">Imagen fly</p>
           </NextLink>
         </NavbarBrand>
       </NavbarContent>
@@ -43,7 +44,7 @@ export const Navbar = () => {
       >
         <TabsComponenets />
 
-        <ul className="hidden gap-4 justify-start ml-2">
+        <div className="hidden gap-4 justify-start ml-2">
           {siteConfig.navItems.map((item) => (
             <NavbarItem key={item.href}>
               <NextLink
@@ -58,7 +59,7 @@ export const Navbar = () => {
               </NextLink>
             </NavbarItem>
           ))}
-        </ul>
+        </div>
       </NavbarContent>
 
       <NavbarContent className="basis-1 pl-4" justify="end">

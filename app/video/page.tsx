@@ -70,14 +70,14 @@ const Aple = () => {
   );
 };
 
-export default function GenerateImageScreen() {
+export default function GenerateVideoScreen() {
   return (
     <main className="w-full">
       <DropdownComponenet />
       <section className="max-w-md mx-auto flex flex-col items-center justify-center gap-4 py-8 md:py-10">
         <div
           className={
-            "flex justify-center *:rounded-md mb-10 *:*:size-44 *:*:object-cover *:*:border-4 "
+            "flex justify-center *:rounded-md mb-10 *:*:size-44 *:*:object-cover "
           }
         >
           <Image
@@ -99,7 +99,7 @@ export default function GenerateImageScreen() {
             src={`https://images.pexels.com/photos/30739081/pexels-photo-30739081/free-photo-of-delicious-strawberry-cake-with-elegant-tulips.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`}
           />
         </div>
-        <h1 className={title()}>Generate Image</h1>
+        <h1 className={title()}>Generate Video</h1>
       </section>
       <section className="mb-24 mt-10 w-full hidden">
         <Aple />
@@ -127,7 +127,7 @@ export default function GenerateImageScreen() {
                 <HeartIcon />
               </Button>
             }
-            placeholder="Generate new image with imagenFly..."
+            placeholder="Generate new video with imagenFly..."
             size="lg"
             variant="bordered"
           />
