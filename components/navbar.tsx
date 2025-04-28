@@ -17,6 +17,7 @@ import TabsComponenets from "./Tabs";
 import { siteConfig } from "@/config/site";
 import { Logo } from "@/components/icons";
 import ModalSignIn from "@/components/modalSignIn";
+import { ThemeSwitch } from "./theme-switch";
 
 export const Navbar = () => {
   return (
@@ -64,6 +65,7 @@ export const Navbar = () => {
 
       <NavbarContent className="basis-1 pl-4" justify="end">
         <ModalSignIn />
+        <ThemeSwitch />
       </NavbarContent>
 
       <NavbarMenu>

@@ -11,8 +11,7 @@ const OPTIONS: EmblaOptionsType = {
   align: "start",
   duration: 50,
 };
-const SLIDE_COUNT = 6;
-const SLIDES = Array.from(Array(SLIDE_COUNT).keys());
+const SLIDES = Array.from(Array(6).keys());
 
 export default function Index() {
   return <EmblaCarousel options={OPTIONS} slides={SLIDES} />;

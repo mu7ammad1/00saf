@@ -49,7 +49,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
       <div ref={emblaRef} className="embla__viewport">
         <div className="embla__container">
           {slides.map((index) => (
-            <div key={index} className="embla__slide bg-teal-500">
+            <div key={index} className="embla__slide bg-green-500">
               <div className="embla__slide__number">
                 <span>{index + 1}</span>
               </div>
