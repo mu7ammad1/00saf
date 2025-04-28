@@ -62,7 +62,7 @@
   height: 2rem;
   z-index: 1;
   border-radius: 100%;
-  background-color: blanchedalmond;
+  background-color: gainsboro;
 }
 .embla__button:disabled {
   color: var(--detail-high-contrast);

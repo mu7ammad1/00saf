@@ -3,10 +3,11 @@ import { Button } from "@heroui/button";
 import Link from "next/link";
 
 import Index from "@/components/c";
+import { PinterestLayout } from "@/components/Dynamic";
 
 const BTNS = () => {
   return (
-    <CardBody className="flex items-baseline justify-start w-full p-0">
+    <CardBody className="flex items-baseline justify-center w-full p-0">
       <h3 className="text-sm flex justify-start items-baseline text-start">
         Generate new image with prompt...
       </h3>
@@ -30,7 +31,7 @@ export default function Home() {
     <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10 w-full">
       <Index />
       <div className="flex flex-col items-center justify-center gap-4 py-8 md:py-10 w-full">
-        <Card className="w-full max-w-full gap-2 grid grid-cols-3 shadow-none">
+        <Card className="w-full max-w-full gap-2 grid grid-cols-3 shadow-none justify-center items-center">
           <BTNS />
           <BTNS />
           <BTNS />
@@ -42,6 +43,103 @@ export default function Home() {
           <BTNS />
           <BTNS />
           <BTNS />
+        </Card>
+      </div>
+      <div className="flex flex-col items-center justify-center gap-4 py-8 md:py-10 w-full">
+        <h3>Inspiration</h3>
+        <Card className="w-full max-w-full gap-2 shadow-none">
+          <PinterestLayout
+            src={[
+              "https://heroui.com/images/hero-card-complete.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://heroui.com/images/hero-card-complete.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://heroui.com/images/hero-card-complete.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://heroui.com/images/hero-card-complete.jpeg",
+              "https://heroui.com/images/hero-card-complete.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://heroui.com/images/hero-card-complete.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://heroui.com/images/hero-card-complete.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://heroui.com/images/hero-card-complete.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://heroui.com/images/hero-card-complete.jpeg",
+              "https://heroui.com/images/hero-card-complete.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://heroui.com/images/hero-card-complete.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://heroui.com/images/hero-card-complete.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://heroui.com/images/hero-card-complete.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://heroui.com/images/hero-card-complete.jpeg",
+              "https://heroui.com/images/hero-card-complete.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://heroui.com/images/hero-card-complete.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://heroui.com/images/hero-card-complete.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://heroui.com/images/hero-card-complete.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://heroui.com/images/hero-card-complete.jpeg",
+              "https://heroui.com/images/hero-card-complete.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://heroui.com/images/hero-card-complete.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://heroui.com/images/hero-card-complete.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://heroui.com/images/hero-card-complete.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://heroui.com/images/hero-card-complete.jpeg",
+              "https://heroui.com/images/hero-card-complete.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://heroui.com/images/hero-card-complete.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://heroui.com/images/hero-card-complete.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://heroui.com/images/hero-card-complete.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://heroui.com/images/hero-card-complete.jpeg",
+              "https://heroui.com/images/hero-card-complete.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://heroui.com/images/hero-card-complete.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://heroui.com/images/hero-card-complete.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://heroui.com/images/hero-card-complete.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://heroui.com/images/hero-card-complete.jpeg",
+              "https://heroui.com/images/hero-card-complete.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://heroui.com/images/hero-card-complete.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://heroui.com/images/hero-card-complete.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://heroui.com/images/hero-card-complete.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://heroui.com/images/hero-card-complete.jpeg",
+              "https://heroui.com/images/hero-card-complete.jpeg",
+              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+            ]}
+          />
         </Card>
       </div>
     </section>

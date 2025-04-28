@@ -40,7 +40,7 @@ export default function RootLayout({
           "min-h-screen bg-background font-sans antialiased rubik-rubikFont",
         )}
       >
-        <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
+        <Providers themeProps={{ attribute: "class", defaultTheme: "light" }}>
           <div className="relative flex flex-col h-screen">
             <main className="container mx-auto max-w-7xl flex-grow">
               <Navbar />
