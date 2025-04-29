@@ -63,7 +63,7 @@ export default function Home() {
       </div>
       <div className="flex flex-col items-center justify-center gap-4 w-full">
         <h3 className="flex justify-start w-full">Inspiration</h3>
-        <Card className="w-full max-w-full gap-2 shadow-none justify-center items-center grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+        <Card className="w-full max-w-full gap-2 shadow-none ">
           <PinterestLayout
             src={[
               "https://heroui.com/images/hero-card-complete.jpeg",
