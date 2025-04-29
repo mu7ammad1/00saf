@@ -13,11 +13,11 @@ import NextLink from "next/link";
 import clsx from "clsx";
 
 import TabsComponenets from "./Tabs";
+import { ThemeSwitch } from "./theme-switch";
+import DrawerComponent from "./DrawerComponent";
 
 import { siteConfig } from "@/config/site";
-import { Logo } from "@/components/icons";
 import ModalSignIn from "@/components/modalSignIn";
-import { ThemeSwitch } from "./theme-switch";
 
 export const Navbar = () => {
   return (
@@ -27,10 +27,11 @@ export const Navbar = () => {
       maxWidth="2xl"
       position="sticky"
     >
-      <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
+      <NavbarContent className="basis-1/4 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
-          <NavbarContent className="sm:hidden basis-1">
-            <NavbarMenuToggle />
+          <NavbarContent className="sm:hidden">
+            {/* <NavbarMenuToggle /> */}
+            <DrawerComponent />
           </NavbarContent>
           <NextLink className="flex justify-start items-center gap-1" href="/">
             {/* <Logo /> */}
@@ -67,28 +68,6 @@ export const Navbar = () => {
         <ModalSignIn />
         <ThemeSwitch />
       </NavbarContent>
-
-      <NavbarMenu>
-        <div className="mx-4 mt-2 flex flex-col gap-2">
-          {siteConfig.navMenuItems.map((item, index) => (
-            <NavbarMenuItem key={`${item}-${index}`}>
-              <Link
-                color={
-                  index === 2
-                    ? "primary"
-                    : index === siteConfig.navMenuItems.length - 1
-                      ? "danger"
-                      : "foreground"
-                }
-                href={item.href}
-                size="lg"
-              >
-                {item.label}
-              </Link>
-            </NavbarMenuItem>
-          ))}
-        </div>
-      </NavbarMenu>
     </HeroUINavbar>
   );
 };
