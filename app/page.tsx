@@ -54,7 +54,7 @@ export default function Home() {
     <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10 w-full ">
       <Index />
       <div className="flex flex-col items-center justify-center gap-4 py-8 md:py-10 w-full">
-        <Card className="w-full max-w-full gap-2 grid grid-cols-3 shadow-none justify-center items-center max-sm:grid-cols-1 max-md:grid-cols-2">
+        <Card className="w-full max-w-full gap-2 grid shadow-none justify-center items-center grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           <BTNS />
           <BTNS />
           <BTNS />
