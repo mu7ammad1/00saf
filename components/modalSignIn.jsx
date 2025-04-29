@@ -1,18 +1,17 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, React } from "react";
 import {
   Modal,
   ModalContent,
   ModalHeader,
   ModalBody,
-  ModalFooter,
   Button,
   useDisclosure,
-  Checkbox,
   Input,
   Link,
 } from "@heroui/react";
+import { Tabs, Tab, Card, CardBody } from "@heroui/react";
 
 import { login, signup } from "./actions";
 
@@ -67,6 +66,7 @@ export const LockIcon = (props) => {
 export default function ModalSignIn() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [user, setUser] = useState(null);
+  const [selected, setSelected] = useState("login");
 
   // Fetch user data on the client side
   useEffect(() => {
@@ -95,10 +95,12 @@ export default function ModalSignIn() {
 
   return (
     <>
-      <Button color="default" onPress={onOpen}>
+      <Button color="default" variant="bordered" onPress={onOpen}>
         {user ? "account" : "Make an Account"}
       </Button>
       <Modal
+        hideCloseButton
+        backdrop="blur"
         isOpen={isOpen}
         placement="bottom-center"
         onOpenChange={onOpenChange}
@@ -110,67 +112,120 @@ export default function ModalSignIn() {
                 <AccountForm user={user} />
               ) : (
                 <form>
-                  <ModalHeader className="flex flex-col gap-1">
-                    Log in
-                  </ModalHeader>
-                  <ModalBody>
-                    <Input
-                      required
-                      endContent={
-                        <MailIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
-                      }
-                      id="email"
-                      label="Email"
-                      name="email"
-                      placeholder="Enter your email"
-                      type="email"
-                      variant="bordered"
-                    />
-                    <Input
-                      required
-                      endContent={
-                        <LockIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
-                      }
-                      id="password"
-                      label="Password"
-                      name="password"
-                      placeholder="Enter your password"
-                      type="password"
-                      variant="bordered"
-                    />
-                    <div className="flex py-2 px-1 justify-between">
-                      <Checkbox
-                        classNames={{
-                          label: "text-small",
-                        }}
-                      >
-                        Remember me
-                      </Checkbox>
-                      <Link color="primary" href="#" size="sm">
-                        Forgot password?
-                      </Link>
+                  <ModalBody className="p-0">
+                    <div className="flex flex-col w-full p-0">
+                      <Card className="max-w-full w-full h-full">
+                        <CardBody className="overflow-hidden">
+                          <Tabs
+                            fullWidth
+                            aria-label="Tabs form"
+                            className="wfull h-full"
+                            defaultSelectedKey="login"
+                            selectedKey={selected}
+                            size="md"
+                            onSelectionChange={setSelected}
+                          >
+                            <Tab key="login" title="Login">
+                              <div className="flex flex-col gap-4 w-full">
+                                <Input
+                                  // isRequired
+                                  endContent={
+                                    <MailIcon className="text-2xl text-default-400 pointer-events-none" />
+                                  }
+                                  id="email"
+                                  label="Email"
+                                  name="email"
+                                  placeholder="Enter your email"
+                                  type="email"
+                                />
+                                <Input
+                                  // isRequired
+                                  endContent={
+                                    <LockIcon className="text-2xl text-default-400 pointer-events-none" />
+                                  }
+                                  id="password"
+                                  label="Password"
+                                  name="password"
+                                  placeholder="Enter your password"
+                                  type="password"
+                                />
+                                <div className="flex py-2 px-1 justify-between">
+                                  <Link color="primary" href="#" size="md">
+                                    Forgot password?
+                                  </Link>
+                                </div>
+
+                                <p className="text-center text-small">
+                                  Need to create an account?{" "}
+                                  <Link
+                                    size="sm"
+                                    onPress={() => setSelected("sign-up")}
+                                  >
+                                    Sign up
+                                  </Link>
+                                </p>
+                                <div className="flex gap-2 justify-end">
+                                  <Button
+                                    fullWidth
+                                    color="primary"
+                                    formAction={(formData) =>
+                                      handleFormAction(login, formData)
+                                    }
+                                    type="submit"
+                                  >
+                                    Login in
+                                  </Button>
+                                </div>
+                              </div>
+                            </Tab>
+                            <Tab key="sign-up" title="Sign up">
+                              <div className="flex flex-col gap-4 w-full">
+                                <Input
+                                  isRequired
+                                  label="Name"
+                                  placeholder="Enter your name"
+                                  type="password"
+                                />
+                                <Input
+                                  isRequired
+                                  label="Email"
+                                  placeholder="Enter your email"
+                                  type="email"
+                                />
+                                <Input
+                                  isRequired
+                                  label="Password"
+                                  placeholder="Enter your password"
+                                  type="password"
+                                />
+                                <p className="text-center text-small">
+                                  Already have an account?{" "}
+                                  <Link
+                                    size="sm"
+                                    onPress={() => setSelected("login")}
+                                  >
+                                    Login
+                                  </Link>
+                                </p>
+                                <div className="flex gap-2 justify-end">
+                                  <Button
+                                    fullWidth
+                                    color="primary"
+                                    formAction={(formData) =>
+                                      handleFormAction(signup, formData)
+                                    }
+                                    type="submit"
+                                  >
+                                    Sign in
+                                  </Button>
+                                </div>
+                              </div>
+                            </Tab>
+                          </Tabs>
+                        </CardBody>
+                      </Card>
                     </div>
                   </ModalBody>
-                  <ModalFooter>
-                    <Button
-                      color="primary"
-                      formAction={(formData) =>
-                        handleFormAction(signup, formData)
-                      }
-                      type="submit"
-                    >
-                      Sign in
-                    </Button>
-                    <Button
-                      color="primary"
-                      formAction={(formData) =>
-                        handleFormAction(login, formData)
-                      }
-                      type="submit"
-                    >
-                      Login in
-                    </Button>
-                  </ModalFooter>
                 </form>
               )}
             </>

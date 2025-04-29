@@ -22,7 +22,7 @@ import ModalSignIn from "@/components/modalSignIn";
 export const Navbar = () => {
   return (
     <HeroUINavbar
-      isBlurred={true}
+      isBlurred={false}
       isBordered={false}
       maxWidth="2xl"
       position="sticky"
@@ -30,11 +30,9 @@ export const Navbar = () => {
       <NavbarContent className="basis-1/4 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
           <NavbarContent className="sm:hidden">
-            {/* <NavbarMenuToggle /> */}
             <DrawerComponent />
           </NavbarContent>
           <NextLink className="flex justify-start items-center gap-1" href="/">
-            {/* <Logo /> */}
             <p className="font-semibold text-xl text-inherit">Imagen fly</p>
           </NextLink>
         </NavbarBrand>
