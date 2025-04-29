@@ -8,7 +8,6 @@ import {
   PrevButton,
   usePrevNextButtons,
 } from "./EmblaCarouselArrowButtons";
-import { Image } from "@heroui/image";
 
 type PropType = {
   slides: any[];
@@ -50,25 +49,21 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
       <div ref={emblaRef} className="embla__viewport">
         <div className="embla__container">
           {slides.map((slide, index) => (
-            <div key={slide.id} className="embla__slide bg-green-500" style={{
-              width: "100%",
-              objectFit: "contain",
-              borderRadius: "0.5rem",
-              boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
-            }}
+            <div
+              key={slide.id}
+              className="embla__slide"
+              style={{
+                width: "100%",
+                backgroundImage: `url(${slide.image})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }}
             >
-              <Image
-                alt={`Slide ${index + 1}`}
-                // className="w-full h-full object-contain"
-                src={slide.image}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "contain",
-                  borderRadius: "0.5rem",
-                  boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
-                }}
-              />
+              <div className="bg-gradient-to-t to-white/0 from-white/50 dark:to-black/0 dark:from-black/50 absolute inset-0 z-10" />
+              <div>
+                <p className="text-white">{`Slide ${index + 1} content`}</p>
+              </div>
             </div>
           ))}
         </div>

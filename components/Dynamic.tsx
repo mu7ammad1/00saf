@@ -6,7 +6,7 @@ type ImageProps = {
   alt?: string;
 };
 const Dynamic: React.FC<ImageProps> = ({ src, alt = "" }) => (
-  <div className="break-inside-avoid mb-4 rounded-2xl overflow-hidden  shadow-md ">
+  <div className="break-inside-avoid mb-4 rounded-xl overflow-hidden  shadow-md ">
     <Image
       isBlurred
       alt={alt}
@@ -19,12 +19,12 @@ const Dynamic: React.FC<ImageProps> = ({ src, alt = "" }) => (
 export const PinterestLayout: React.FC<{ src: string[] }> = ({ src }) => (
   <div
     className="mx-auto w-full max-w-[1400px] px-4"
-    style={{ columnGap: "1rem" }}
+    style={{ columnGap: "0rem" }}
   >
-    <div className="columns-2 sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5 gap-4">
+    <div className="columns-2 sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5 gap-3 mx-auto">
       {src.map((item, index) => (
         <Dynamic key={index} alt={`Image ${index + 1}`} src={item} />
-      ))} 
+      ))}
     </div>
   </div>
 );
