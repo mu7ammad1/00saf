@@ -50,7 +50,7 @@ const BTNS = () => {
 
 export default function Home() {
   return (
-    <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10 w-full px-5">
+    <section className="flex flex-col items-center justify-center gap-10 py-8 md:py-10 w-full px-5">
       <Index />
       <div className="flex flex-col items-center justify-center gap-4 w-full">
         <Card className="w-full max-w-full gap-2 grid shadow-none justify-center items-center grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">

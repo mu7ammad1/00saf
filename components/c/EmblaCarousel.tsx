@@ -2,6 +2,7 @@ import React, { useCallback } from "react";
 import { EmblaOptionsType } from "embla-carousel";
 import useEmblaCarousel from "embla-carousel-react";
 import AutoScroll from "embla-carousel-auto-scroll";
+import { Button } from "@heroui/button";
 
 import {
   NextButton,
@@ -51,7 +52,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
           {slides.map((slide, index) => (
             <div
               key={slide.id}
-              className="embla__slide"
+              className="embla__slide flex items-end relative mx-5"
               style={{
                 width: "100%",
                 backgroundImage: `url(${slide.image})`,
@@ -60,9 +61,17 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                 backgroundRepeat: "no-repeat",
               }}
             >
-              <div className="bg-gradient-to-t to-white/0 from-white/50 dark:to-black/0 dark:from-black/50 absolute inset-0 z-10" />
-              <div>
-                <p className="text-white">{`Slide ${index + 1} content`}</p>
+              <div className="bg-gradient-to-t to-white/0 from-black/30 dark:to-black/0 dark:from-white/30 absolute inset-0 z-0 rounded-lg" />
+              <div className="p-3 flex justify-between items-center w-full z-10 text-white">
+                <div className="flex flex-col">
+                  <h3 className="p-0 font-medium">Generate Image</h3>
+                  <p className="p-0 text-sm">{`Slide ${index + 1} content`}</p>
+                </div>
+                <div className="flex flex-col">
+                  <Button className="p-0" radius="full">
+                    Try now
+                  </Button>
+                </div>
               </div>
             </div>
           ))}
