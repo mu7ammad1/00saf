@@ -96,16 +96,22 @@ export default function Home() {
             <div className="flex flex-col items-center justify-center w-10 h-10">
               <svg
                 className="size-8"
-                fill="currentColor"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={1.5}
                 viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <path d="M4.5 4.5a3 3 0 0 0-3 3v9a3 3 0 0 0 3 3h8.25a3 3 0 0 0 3-3v-9a3 3 0 0 0-3-3H4.5ZM19.94 18.75l-2.69-2.69V7.94l2.69-2.69c.944-.945 2.56-.276 2.56 1.06v11.38c0 1.336-1.616 2.005-2.56 1.06Z" />
+                <path
+                  d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
               </svg>
             </div>
             <div className="flex flex-col items-start justify-center gap-0 w-full">
               <h3 className="text-lg font-medium flex w-full justify-start items-baseline text-start">
-                Generate image
+                Generate video
               </h3>
               <p className="text-xs flex w-full justify-start items-baseline text-start">
                 Generate new image with prompt...
@@ -133,7 +139,7 @@ export default function Home() {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  d="M16.712 4.33a9.027 9.027 0 0 1 1.652 1.306c.51.51.944 1.064 1.306 1.652M16.712 4.33l-3.448 4.138m3.448-4.138a9.014 9.014 0 0 0-9.424 0M19.67 7.288l-4.138 3.448m4.138-3.448a9.014 9.014 0 0 1 0 9.424m-4.138-5.976a3.736 3.736 0 0 0-.88-1.388 3.737 3.737 0 0 0-1.388-.88m2.268 2.268a3.765 3.765 0 0 1 0 2.528m-2.268-4.796a3.765 3.765 0 0 0-2.528 0m4.796 4.796c-.181.506-.475.982-.88 1.388a3.736 3.736 0 0 1-1.388.88m2.268-2.268 4.138 3.448m0 0a9.027 9.027 0 0 1-1.306 1.652c-.51.51-1.064.944-1.652 1.306m0 0-3.448-4.138m3.448 4.138a9.014 9.014 0 0 1-9.424 0m5.976-4.138a3.765 3.765 0 0 1-2.528 0m0 0a3.736 3.736 0 0 1-1.388-.88 3.737 3.737 0 0 1-.88-1.388m2.268 2.268L7.288 19.67m0 0a9.024 9.024 0 0 1-1.652-1.306 9.027 9.027 0 0 1-1.306-1.652m0 0 4.138-3.448M4.33 16.712a9.014 9.014 0 0 1 0-9.424m4.138 5.976a3.765 3.765 0 0 1 0-2.528m0 0c.181-.506.475-.982.88-1.388a3.736 3.736 0 0 1 1.388-.88m-2.268 2.268L4.33 7.288m6.406 1.18L7.288 4.33m0 0a9.024 9.024 0 0 0-1.652 1.306A9.025 9.025 0 0 0 4.33 7.288"
+                  d="M7.5 3.75H6A2.25 2.25 0 0 0 3.75 6v1.5M16.5 3.75H18A2.25 2.25 0 0 1 20.25 6v1.5m0 9V18A2.25 2.25 0 0 1 18 20.25h-1.5m-9 0H6A2.25 2.25 0 0 1 3.75 18v-1.5M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
@@ -141,7 +147,7 @@ export default function Home() {
             </div>
             <div className="flex flex-col items-start justify-center gap-0 w-full">
               <h3 className="text-lg font-medium flex w-full justify-start items-baseline text-start">
-                Generate image
+                Generate 3D model
               </h3>
               <p className="text-xs flex w-full justify-start items-baseline text-start">
                 Generate new image with prompt...
@@ -177,7 +183,7 @@ export default function Home() {
             </div>
             <div className="flex flex-col items-start justify-center gap-0 w-full">
               <h3 className="text-lg font-medium flex w-full justify-start items-baseline text-start">
-                Generate image
+                Edit image
               </h3>
               <p className="text-xs flex w-full justify-start items-baseline text-start">
                 Generate new image with prompt...
@@ -207,7 +213,7 @@ export default function Home() {
             </div>
             <div className="flex flex-col items-start justify-center gap-0 w-full">
               <h3 className="text-lg font-medium flex w-full justify-start items-baseline text-start">
-                Generate image
+                Enhance image
               </h3>
               <p className="text-xs flex w-full justify-start items-baseline text-start">
                 Generate new image with prompt...
