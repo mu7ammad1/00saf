@@ -6,7 +6,7 @@ type ImageProps = {
   alt?: string;
 };
 const Dynamic: React.FC<ImageProps> = ({ src, alt = "" }) => (
-  <div className="break-inside-avoid mb-4 rounded-xl overflow-hidden  shadow-md ">
+  <div className="break-inside-avoid mb-3 rounded-xl overflow-hidden ">
     <Image
       isBlurred
       alt={alt}

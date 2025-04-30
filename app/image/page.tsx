@@ -51,8 +51,10 @@ const Aple = ({ src }: { src: string[] }) => {
 export default function GenerateImageScreen() {
   return (
     <main className="w-full">
-      <DropdownComponenet />
-      <section className="max-w-md mx-auto hidden flex-col items-center justify-center gap-4 py-8 md:py-10">
+      <section className="max-w-2xl mx-auto flex items-center justify-center gap-4">
+        <DropdownComponenet />
+      </section>
+      <section className="max-w-md mx-auto flex flex-col items-center justify-center gap-4 py-8 md:py-10">
         <div
           className={
             "flex justify-center *:rounded-md mb-10 *:*:size-44 *:*:object-cover *:*:border-4 "
@@ -79,7 +81,7 @@ export default function GenerateImageScreen() {
         </div>
         <h1 className={title()}>Generate Image</h1>
       </section>
-      <section className="mb-24 mt-10 w-full">
+      <section className="mb-24 mt-10 w-full hidden">
         <Aple
           src={[
             "https://heroui.com/images/hero-card-complete.jpeg",
