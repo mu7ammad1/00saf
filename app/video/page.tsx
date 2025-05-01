@@ -79,7 +79,7 @@ export default function GenerateVideoScreen() {
       <section className="max-w-md mx-auto flex flex-col items-center justify-center gap-4 py-8 md:py-10">
         <div
           className={
-            "flex justify-center *:rounded-md mb-10 *:*:size-40 *:*:object-cover *:*:border-4 "
+            "flex justify-center *:rounded-md mb-10 *:*:size-40 *:*:max-sm:h-32 *:*:object-cover *:*:border-4 "
           }
         >
           <Image

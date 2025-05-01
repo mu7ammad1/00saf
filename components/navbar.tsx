@@ -23,8 +23,8 @@ export const Navbar = () => {
       maxWidth="2xl"
       position="sticky"
     >
-      <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
-        <NavbarBrand as="li" className="gap-3 max-w-fit">
+      <NavbarContent className="basis-full" justify="start">
+        <NavbarBrand as="li" className="gap-3 max-w-full">
           <NavbarContent className="sm:hidden">
             <DrawerComponent />
           </NavbarContent>
@@ -41,7 +41,7 @@ export const Navbar = () => {
       >
         <TabsComponenets />
 
-        <div className="hidden gap-4 justify-start ml-2">
+        <div className="hidden gap-4 justify-start">
           {siteConfig.navItems.map((item) => (
             <NavbarItem key={item.href}>
               <NextLink
@@ -59,7 +59,7 @@ export const Navbar = () => {
         </div>
       </NavbarContent>
 
-      <NavbarContent className="basis-1 pl-4" justify="end">
+      <NavbarContent className="basis-1" justify="end">
         <ModalSignIn />
         {/* <ThemeSwitch /> */}
       </NavbarContent>
