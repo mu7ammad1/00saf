@@ -57,26 +57,26 @@ export default function GenerateImageScreen() {
       <section className="max-w-md mx-auto flex flex-col items-center justify-center gap-4 py-8 md:py-10">
         <div
           className={
-            "flex justify-center *:rounded-md mb-10 *:*:size-44 *:*:object-cover *:*:border-4 "
+            "flex justify-center *:rounded-md mb-10 *:*:size-40 *:*:object-cover *:*:border-4 "
           }
         >
           <Image
             isBlurred
             alt={"placeholder"}
             className={"-rotate-12 translate-x-10 z-0"}
-            src="https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+            src="https://www.krea.ai/api/img?f=webp&i=https%3A%2F%2Ftest1-emgndhaqd0c9h2db.a01.azurefd.net%2Fimages%2F555e96f9-d469-4d8f-b1e3-f62da7fbad45.png"
           />
           <Image
             isBlurred
             alt={"placeholder"}
             className={"z-10"}
-            src={`https://heroui.com/images/hero-card-complete.jpeg`}
+            src={`https://www.krea.ai/api/img?f=webp&i=https%3A%2F%2Ftest1-emgndhaqd0c9h2db.a01.azurefd.net%2Fimages%2F3980f25a-3224-401b-a297-d3abdbbfefbf.png`}
           />
           <Image
             isBlurred
             alt={"placeholder"}
             className={"rotate-12 -translate-x-10 z-0"}
-            src={`https://images.pexels.com/photos/30739081/pexels-photo-30739081/free-photo-of-delicious-strawberry-cake-with-elegant-tulips.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`}
+            src={`https://www.krea.ai/api/img?f=webp&i=https%3A%2F%2Ftest1-emgndhaqd0c9h2db.a01.azurefd.net%2Fimages%2F9e3d94e8-932c-4483-9ad2-41531d62163c.png&s=1024`}
           />
         </div>
         <h1 className={title()}>Generate Image</h1>

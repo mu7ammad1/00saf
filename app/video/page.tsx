@@ -73,11 +73,13 @@ const Aple = () => {
 export default function GenerateVideoScreen() {
   return (
     <main className="w-full">
-      <DropdownComponenet />
+      <section className="max-w-2xl mx-auto flex items-center justify-center gap-4">
+        <DropdownComponenet />
+      </section>
       <section className="max-w-md mx-auto flex flex-col items-center justify-center gap-4 py-8 md:py-10">
         <div
           className={
-            "flex justify-center *:rounded-md mb-10 *:*:size-44 *:*:object-cover "
+            "flex justify-center *:rounded-md mb-10 *:*:size-40 *:*:object-cover *:*:border-4 "
           }
         >
           <Image

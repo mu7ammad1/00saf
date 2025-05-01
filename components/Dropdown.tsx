@@ -28,6 +28,7 @@ export default function DropdownComponenet() {
       <DropdownMenu
         disallowEmptySelection
         aria-label="Single selection example"
+        className="w-72"
         selectedKeys={selectedKeys}
         selectionMode="single"
         variant="flat"
@@ -35,16 +36,39 @@ export default function DropdownComponenet() {
           setSelectedKeys(new Set(Array.from(keys).map(String)))
         }
       >
-        <DropdownItem key="Imagenfly">imagenFly</DropdownItem>
-        <DropdownItem key="realistic">Realistic</DropdownItem>
-        <DropdownItem key="anime">anime</DropdownItem>
-        <DropdownItem key="flux-schnell">Flux schnell</DropdownItem>
-        <DropdownItem key="flux-div">Flux div</DropdownItem>
-        <DropdownItem key="kling-1.0-standard">Kling Standard</DropdownItem>
-        <DropdownItem key="kling-1.0-pro">Kling Pro</DropdownItem>
-        <DropdownItem key="kling-1.5">kling 1.5</DropdownItem>
-        <DropdownItem key="hailuo-ai">hailuo ai</DropdownItem>
-        <DropdownItem key="hailuo-live-ai">hailuo live</DropdownItem>
+        <DropdownItem
+          key="Imagenfly"
+          description="Generate images full of life"
+        >
+          imagenFly
+        </DropdownItem>
+        <DropdownItem key="realistic" description="Create a new file">
+          Realistic
+        </DropdownItem>
+        <DropdownItem key="anime" description="Create a new file">
+          anime
+        </DropdownItem>
+        <DropdownItem key="flux-schnell" description="Create a new file">
+          Flux schnell
+        </DropdownItem>
+        <DropdownItem key="flux-div" description="Create a new file">
+          Flux div
+        </DropdownItem>
+        <DropdownItem key="kling-1.0-standard" description="Create a new file">
+          Kling Standard
+        </DropdownItem>
+        <DropdownItem key="kling-1.0-pro" description="Create a new file">
+          Kling Pro
+        </DropdownItem>
+        <DropdownItem key="kling-1.5" description="Create a new file">
+          kling 1.5
+        </DropdownItem>
+        <DropdownItem key="hailuo-ai" description="Create a new file">
+          hailuo ai
+        </DropdownItem>
+        <DropdownItem key="hailuo-live-ai" description="Create a new file">
+          hailuo live
+        </DropdownItem>
       </DropdownMenu>
     </Dropdown>
   );
