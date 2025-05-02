@@ -10,10 +10,10 @@ import clsx from "clsx";
 
 import TabsComponenets from "./Tabs";
 import DrawerComponent from "./DrawerComponent";
+import { Logo } from "./icons";
 
 import { siteConfig } from "@/config/site";
 import ModalSignIn from "@/components/modalSignIn";
-import { Logo } from "./icons";
 
 export const Navbar = () => {
   return (
@@ -23,12 +23,15 @@ export const Navbar = () => {
       maxWidth="2xl"
       position="sticky"
     >
-      <NavbarContent className="basis-full" justify="start">
+      <NavbarContent className="basis-20" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-full">
-          <NavbarContent className="sm:hidden">
+          <NavbarContent className="sm:hidden basis-1/12">
             <DrawerComponent />
           </NavbarContent>
-          <NextLink className="flex justify-start items-center gap-1" href="/">
+          <NextLink
+            className="flex justify-start items-center gap-1 max-sm:hidden"
+            href="/"
+          >
             <Logo size={32} />
             <p className="font-semibold text-xl text-inherit">Imagenfly</p>
           </NextLink>

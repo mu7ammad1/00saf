@@ -35,7 +35,7 @@ const SLIDES = [
     image:
       "https://www.krea.ai/api/img?f=webp&i=https%3A%2F%2Ftest1-emgndhaqd0c9h2db.a01.azurefd.net%2Fimages%2F9e3d94e8-932c-4483-9ad2-41531d62163c.png&s=1024",
     title: "Generate 3D model",
-    description: "Description 1",
+    description: "Generate 3D models from your ideas",
     buttonText: "Try now",
     buttonLink: "/stage",
   },
@@ -52,10 +52,10 @@ const SLIDES = [
     id: 5,
     image:
       "https://www.krea.ai/api/img?f=webp&i=https%3A%2F%2Ftest1-emgndhaqd0c9h2db.a01.azurefd.net%2Fimages%2F3980f25a-3224-401b-a297-d3abdbbfefbf.png",
-    title: "Title 1",
-    description: "Description 1",
+    title: "Traning AI model",
+    description: "Train your own AI model with ease.",
     buttonText: "Try now",
-    buttonLink: "https://example.com/1",
+    buttonLink: "/train",
   },
 ];
 

@@ -41,7 +41,7 @@ export default function Home() {
             <Button
               as={Link}
               color="default"
-              href="/#"
+              href="/image"
               radius="full"
               size="sm"
               variant="solid"
@@ -77,7 +77,7 @@ export default function Home() {
             <Button
               as={Link}
               color="default"
-              href="/#"
+              href="/video"
               radius="full"
               size="sm"
               variant="solid"
@@ -107,13 +107,13 @@ export default function Home() {
                 Generate 3D model
               </h3>
               <p className="text-xs flex w-full justify-start items-baseline text-start">
-                Generate new image with prompt...
+                Generate 3D models from your ideas
               </p>
             </div>
             <Button
               as={Link}
               color="default"
-              href="/#"
+              href="/stage"
               radius="full"
               size="sm"
               variant="solid"
@@ -149,7 +149,43 @@ export default function Home() {
             <Button
               as={Link}
               color="default"
-              href="/#"
+              href="/edit"
+              radius="full"
+              size="sm"
+              variant="solid"
+            >
+              open
+            </Button>
+          </CardBody>
+          <CardBody className="flex flex-row items-center justify-between w-full p-2 gap-4 rounded-xl">
+            <div className="flex flex-col items-center justify-center w-10 h-10">
+              <svg
+                className="size-8"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M4.5 10.5v3M19.5 10.5v3M7.5 9v6M16.5 9v6M10.5 4.5h3m-3 0v15m3-15v15"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </div>
+            <div className="flex flex-col items-start justify-center gap-0 w-full">
+              <h3 className="text-lg font-medium flex w-full justify-start items-baseline text-start">
+                Traning AI model
+              </h3>
+              <p className="text-xs flex w-full justify-start items-baseline text-start">
+                Train your own AI model with ease.
+              </p>
+            </div>
+            <Button
+              as={Link}
+              color="default"
+              href="/train"
               radius="full"
               size="sm"
               variant="solid"
@@ -164,37 +200,36 @@ export default function Home() {
         <Card className="w-full max-w-full gap-0 shadow-none relative">
           <PinterestLayout
             src={[
-              "https://heroui.com/images/hero-card-complete.jpeg",
-              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
-              "https://heroui.com/images/hero-card-complete.jpeg",
-              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
-              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
-              "https://heroui.com/images/hero-card-complete.jpeg",
-              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
-              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
-              "https://heroui.com/images/hero-card-complete.jpeg",
-              "https://heroui.com/images/hero-card-complete.jpeg",
-              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
-              "https://heroui.com/images/hero-card-complete.jpeg",
-              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
-              "https://heroui.com/images/hero-card-complete.jpeg",
-              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
-              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
-              "https://heroui.com/images/hero-card-complete.jpeg",
-              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
-              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
-              "https://heroui.com/images/hero-card-complete.jpeg",
-              "https://heroui.com/images/hero-card-complete.jpeg",
-              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
-              "https://heroui.com/images/hero-card-complete.jpeg",
-              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
-              "https://heroui.com/images/hero-card-complete.jpeg",
-              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
-              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
-              "https://heroui.com/images/hero-card-complete.jpeg",
-              "https://images.pexels.com/photos/30988803/pexels-photo-30988803/free-photo-of-cozy-blue-sweater-with-yellow-tulips-bouquet.jpeg",
+              "https://videos.openai.com/vg-assets/assets%2Ftask_01jt7a7apdeh7tetcq6x8k3qwg%2F1746149891_img_0.webp?st=2025-05-02T06%3A03%3A18Z&se=2025-05-08T07%3A03%3A18Z&sks=b&skt=2025-05-02T06%3A03%3A18Z&ske=2025-05-08T07%3A03%3A18Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=8ebb0df1-a278-4e2e-9c20-f2d373479b3a&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=SWsb7fgwAOnDd06r48%2FEFt%2F9qItkDKs5nQJsSGs%2FN0w%3D&az=oaivgprodscus",
+              "https://videos.openai.com/vg-assets/assets%2Ftask_01jt7y2vjffmkbt1qsswv1m55a%2F1746170720_img_1.webp?st=2025-05-02T06%3A57%3A35Z&se=2025-05-08T07%3A57%3A35Z&sks=b&skt=2025-05-02T06%3A57%3A35Z&ske=2025-05-08T07%3A57%3A35Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=8ebb0df1-a278-4e2e-9c20-f2d373479b3a&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=FBicnWCqghk1%2FcZ%2BM5VetWwu%2BlMbO7ZDcHS%2B99QPcbM%3D&az=oaivgprodscus",
+              "https://videos.openai.com/vg-assets/assets%2Ftask_01jt754kgef8z93t17prfrmyt3%2F1746144512_img_1.webp?st=2025-05-02T06%3A01%3A47Z&se=2025-05-08T07%3A01%3A47Z&sks=b&skt=2025-05-02T06%3A01%3A47Z&ske=2025-05-08T07%3A01%3A47Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=8ebb0df1-a278-4e2e-9c20-f2d373479b3a&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=UsOkJY9Ukc91iS%2Fh8gr4xi2pbgCKPrqQqf356wh2nvI%3D&az=oaivgprodscus",
+              "https://videos.openai.com/vg-assets/assets%2Ftask_01jt4c5cbbfcc8j4pja2mm23wd%2F1746051244_img_0.webp?st=2025-05-02T06%3A45%3A35Z&se=2025-05-08T07%3A45%3A35Z&sks=b&skt=2025-05-02T06%3A45%3A35Z&ske=2025-05-08T07%3A45%3A35Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=8ebb0df1-a278-4e2e-9c20-f2d373479b3a&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=heDxIK6pipiI6Sg3oKR6hFokEL3YbW7FLR1D%2FYwxYE0%3D&az=oaivgprodscus",
+              "https://videos.openai.com/vg-assets/assets%2Ftask_01jt7b62hhevdv19ahfakx9j0h%2F1746150883_img_0.webp?st=2025-05-02T06%3A03%3A18Z&se=2025-05-08T07%3A03%3A18Z&sks=b&skt=2025-05-02T06%3A03%3A18Z&ske=2025-05-08T07%3A03%3A18Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=8ebb0df1-a278-4e2e-9c20-f2d373479b3a&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=o1Ru9O2yUUrxfzW8T%2Bu42eH%2FVvSCrqxp6WeY9btwovk%3D&az=oaivgprodscus",
+              "https://videos.openai.com/vg-assets/assets%2Ftask_01jt7dzd1kesdts83s0hsax2d4%2F1746153822_img_0.webp?st=2025-05-02T06%3A01%3A12Z&se=2025-05-08T07%3A01%3A12Z&sks=b&skt=2025-05-02T06%3A01%3A12Z&ske=2025-05-08T07%3A01%3A12Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=8ebb0df1-a278-4e2e-9c20-f2d373479b3a&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=PtIxnjK9gd2Qn1JHCFCXpHPvvf0%2BA6scPzNc1g317Mg%3D&az=oaivgprodscus",
+              "https://videos.openai.com/vg-assets/assets%2Ftask_01jrrgtxrseqmsmwwpbv8v211f%2Fimg_0.webp?st=2025-05-02T07%3A51%3A52Z&se=2025-05-08T08%3A51%3A52Z&sks=b&skt=2025-05-02T07%3A51%3A52Z&ske=2025-05-08T08%3A51%3A52Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=8ebb0df1-a278-4e2e-9c20-f2d373479b3a&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=VxrBk%2FxVKtGIoa4vni5hjbIXFXDo6Xa%2BMi7CCEvwlJA%3D&az=oaivgprodscus",
+              "https://videos.openai.com/vg-assets/assets%2Ftask_01jt6gtjhge63vje2eb3pc6nv1%2F1746123213_img_0.webp?st=2025-05-02T06%3A02%3A26Z&se=2025-05-08T07%3A02%3A26Z&sks=b&skt=2025-05-02T06%3A02%3A26Z&ske=2025-05-08T07%3A02%3A26Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=8ebb0df1-a278-4e2e-9c20-f2d373479b3a&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=gEV8SCDnL%2FKioTqdFm1wJOOGClcXzy7lEUwL5xvtcnI%3D&az=oaivgprodscus",
+              "https://videos.openai.com/vg-assets/assets%2Ftask_01jt66wmpffcsbf0h5tqf4f5wv%2F1746112825_img_0.webp?st=2025-05-02T06%3A02%3A35Z&se=2025-05-08T07%3A02%3A35Z&sks=b&skt=2025-05-02T06%3A02%3A35Z&ske=2025-05-08T07%3A02%3A35Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=8ebb0df1-a278-4e2e-9c20-f2d373479b3a&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=G4sWloJB8p0hAJqFR%2FBdyFIuRdPeupoa5KO9ANwp2JE%3D&az=oaivgprodscus",
+              "https://videos.openai.com/vg-assets/assets%2Ftask_01jrnmc4c1fx39492tm8jfhd4b%2Fimg_0.webp?st=2025-05-02T07%3A51%3A52Z&se=2025-05-08T08%3A51%3A52Z&sks=b&skt=2025-05-02T07%3A51%3A52Z&ske=2025-05-08T08%3A51%3A52Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=8ebb0df1-a278-4e2e-9c20-f2d373479b3a&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=CAGfLvYoKrauSQELPvHftSsoZuJqNEyDCQi6QUxeNJQ%3D&az=oaivgprodscus",
+              "https://videos.openai.com/vg-assets/assets%2Ftask_01jrsm16wrf3fs2aqe7pa8thqg%2Fimg_0.webp?st=2025-05-02T07%3A51%3A52Z&se=2025-05-08T08%3A51%3A52Z&sks=b&skt=2025-05-02T07%3A51%3A52Z&ske=2025-05-08T08%3A51%3A52Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=8ebb0df1-a278-4e2e-9c20-f2d373479b3a&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=P%2BITNsiZLVcwE8oDxWXB7%2FrTtSnXAL2L5w%2FV4DDU6pI%3D&az=oaivgprodscus",
+              "https://videos.openai.com/vg-assets/assets%2Ftask_01jshb2vycehk81n4awzbyez9k%2Fimg_0.webp?st=2025-05-02T07%3A51%3A52Z&se=2025-05-08T08%3A51%3A52Z&sks=b&skt=2025-05-02T07%3A51%3A52Z&ske=2025-05-08T08%3A51%3A52Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=8ebb0df1-a278-4e2e-9c20-f2d373479b3a&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=8RZDOaSk7e2id3%2FOYBAGnTFpKYaFUlt10i8zHeeb%2F7w%3D&az=oaivgprodscus",
+              "https://videos.openai.com/vg-assets/assets%2Ftask_01jqvsshr7em5s4nj2wpt1jrcg%2Fimg_0.webp?st=2025-05-02T07%3A51%3A52Z&se=2025-05-08T08%3A51%3A52Z&sks=b&skt=2025-05-02T07%3A51%3A52Z&ske=2025-05-08T08%3A51%3A52Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=8ebb0df1-a278-4e2e-9c20-f2d373479b3a&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=h2UaZXs55n5aFdshiCViAU9xVTIZ2D8ZscSB9ge%2BMEo%3D&az=oaivgprodscus",
+              "https://videos.openai.com/vg-assets/assets%2Ftask_01jqtbvwqcfdeb8tmc251dbsg7%2Fimg_0.webp?st=2025-05-02T07%3A51%3A52Z&se=2025-05-08T08%3A51%3A52Z&sks=b&skt=2025-05-02T07%3A51%3A52Z&ske=2025-05-08T08%3A51%3A52Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=8ebb0df1-a278-4e2e-9c20-f2d373479b3a&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=t67twdLkq7lqC5jt6LK9urswqZJOBA5mxJccmYfwZx8%3D&az=oaivgprodscus",
+              "https://videos.openai.com/vg-assets/assets%2Ftask_01jrcwh41nfgg8rd7zyb8d151n%2Fimg_0.webp?st=2025-05-02T07%3A51%3A52Z&se=2025-05-08T08%3A51%3A52Z&sks=b&skt=2025-05-02T07%3A51%3A52Z&ske=2025-05-08T08%3A51%3A52Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=8ebb0df1-a278-4e2e-9c20-f2d373479b3a&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=l9zxILt6edjs7u%2FhB9qTjVClNVjswuAFAag3OzAeTa0%3D&az=oaivgprodscus",
+              "https://videos.openai.com/vg-assets/assets%2Ftask_01js1gxdyteqj909ane5866e6c%2Fimg_0.webp?st=2025-05-02T07%3A51%3A48Z&se=2025-05-08T08%3A51%3A48Z&sks=b&skt=2025-05-02T07%3A51%3A48Z&ske=2025-05-08T08%3A51%3A48Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=8ebb0df1-a278-4e2e-9c20-f2d373479b3a&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=WfYPWJVo%2BjzFFaIq47vjiHh1Bgu8BiezzOCvnuF6ncA%3D&az=oaivgprodscus",
+              "https://videos.openai.com/vg-assets/assets%2Ftask_01jt0k43fxebdv5fjdy11f9gnh%2F1745924297_img_1.webp?st=2025-05-02T07%3A51%3A48Z&se=2025-05-08T08%3A51%3A48Z&sks=b&skt=2025-05-02T07%3A51%3A48Z&ske=2025-05-08T08%3A51%3A48Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=8ebb0df1-a278-4e2e-9c20-f2d373479b3a&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=9wKE17in%2FHM89%2Bf8qu0g9ARfU9yiWx%2BwDTnk3kLgN%2Fw%3D&az=oaivgprodscus",
+              "https://videos.openai.com/vg-assets/assets%2Ftask_01jt5vepm7ebjrkwcnpk8xes27%2F1746100830_img_0.webp?st=2025-05-02T06%3A55%3A32Z&se=2025-05-08T07%3A55%3A32Z&sks=b&skt=2025-05-02T06%3A55%3A32Z&ske=2025-05-08T07%3A55%3A32Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=8ebb0df1-a278-4e2e-9c20-f2d373479b3a&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=wNcJMX4oB2gd4%2BMLJihC5liFl%2BJ45lajU%2F3q0hvHRZs%3D&az=oaivgprodscus",
+              "https://videos.openai.com/vg-assets/assets%2Ftask_01jt5twbw2fcjbk3tbkxte9hk5%2F1746100241_img_0.webp?st=2025-05-02T06%3A57%3A26Z&se=2025-05-08T07%3A57%3A26Z&sks=b&skt=2025-05-02T06%3A57%3A26Z&ske=2025-05-08T07%3A57%3A26Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=8ebb0df1-a278-4e2e-9c20-f2d373479b3a&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=6BwtvVXsAA0qJxam9HtUnawF7wdVbmQGzZ3R%2F4B2zeE%3D&az=oaivgprodscus",
+              "https://videos.openai.com/vg-assets/assets%2Ftask_01jt6f7948e8trdscw6xmdxfpy%2F1746121592_img_0.webp?st=2025-05-02T06%3A55%3A43Z&se=2025-05-08T07%3A55%3A43Z&sks=b&skt=2025-05-02T06%3A55%3A43Z&ske=2025-05-08T07%3A55%3A43Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=8ebb0df1-a278-4e2e-9c20-f2d373479b3a&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=%2FB%2F5hb2k5TaSXymn2NtXUOZq5RCmIkrUD8uU7yq5zFk%3D&az=oaivgprodscus",
+              "https://videos.openai.com/vg-assets/assets%2Ftask_01jt6mn41kfp890wkm34fyby78%2F1746127268_img_1.webp?st=2025-05-02T06%3A02%3A58Z&se=2025-05-08T07%3A02%3A58Z&sks=b&skt=2025-05-02T06%3A02%3A58Z&ske=2025-05-08T07%3A02%3A58Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=8ebb0df1-a278-4e2e-9c20-f2d373479b3a&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=kebQ6xntyXor2Nl4lj28Ot4UbMOpiFgRSsJXkS252ZU%3D&az=oaivgprodscus",
+              "https://videos.openai.com/vg-assets/assets%2Ftask_01jt6ynrm6e3j9nz7swc0qsv79%2F1746137783_img_0.webp?st=2025-05-02T06%3A02%3A58Z&se=2025-05-08T07%3A02%3A58Z&sks=b&skt=2025-05-02T06%3A02%3A58Z&ske=2025-05-08T07%3A02%3A58Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=8ebb0df1-a278-4e2e-9c20-f2d373479b3a&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=wHIx4Wb7wTMyo8KkKBVDPAZDalnjtzTwrTE0c3FMHsc%3D&az=oaivgprodscus",
+              "https://videos.openai.com/vg-assets/assets%2Ftask_01jt585arkfe1thb4h4b19s6rw%2F1746080617_img_0.webp?st=2025-05-02T07%3A51%3A12Z&se=2025-05-08T08%3A51%3A12Z&sks=b&skt=2025-05-02T07%3A51%3A12Z&ske=2025-05-08T08%3A51%3A12Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=8ebb0df1-a278-4e2e-9c20-f2d373479b3a&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=pGTrv1nqYUjv5kp0snfowKpW6LlfU5QrCIIFvYNQSKo%3D&az=oaivgprodscus",
+              "https://videos.openai.com/vg-assets/assets%2Ftask_01jt3js8hdenh91zw4q7hva67d%2F1746024655_img_1.webp?st=2025-05-02T07%3A51%3A12Z&se=2025-05-08T08%3A51%3A12Z&sks=b&skt=2025-05-02T07%3A51%3A12Z&ske=2025-05-08T08%3A51%3A12Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=8ebb0df1-a278-4e2e-9c20-f2d373479b3a&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=zQAMpT%2BtSppadrZR0SI%2B84kBdwRB95ZNEEtDanspqEw%3D&az=oaivgprodscus",
             ]}
           />
+          <div className="w-full absolute bottom-0 z-20 flex flex-col items-center justify-center">
+            <h1>Make a Cat a motion smile</h1>
+          </div>
+          <div className="w-full h-screen bg-gradient-to-t to-white/0 from-white dark:to-black/0 dark:from-black absolute bottom-0 z-10" />
           <div className="w-full h-screen bg-gradient-to-t to-white/0 from-white dark:to-black/0 dark:from-black absolute bottom-0 z-10" />
         </Card>
       </div>
