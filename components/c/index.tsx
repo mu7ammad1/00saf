@@ -20,6 +20,7 @@ const SLIDES = [
     description: "Create high-quality images from your ideas.",
     buttonText: "Try now",
     buttonLink: "/image",
+    comingSoon: false,
   },
   {
     id: 2,
@@ -29,6 +30,7 @@ const SLIDES = [
     description: "Generate videos and restyle them with ease",
     buttonText: "Try now",
     buttonLink: "/video",
+    comingSoon: false,
   },
   {
     id: 3,
@@ -38,6 +40,7 @@ const SLIDES = [
     description: "Generate 3D models from your ideas",
     buttonText: "Try now",
     buttonLink: "/stage",
+    comingSoon: false,
   },
   {
     id: 4,
@@ -47,6 +50,7 @@ const SLIDES = [
     description: "Easily enhance, and transform your images.",
     buttonText: "Try now",
     buttonLink: "/edit",
+    comingSoon: false,
   },
   {
     id: 5,
@@ -56,6 +60,7 @@ const SLIDES = [
     description: "Train your own AI model with ease.",
     buttonText: "Try now",
     buttonLink: "/train",
+    comingSoon: true,
   },
 ];
 

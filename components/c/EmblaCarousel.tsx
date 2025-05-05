@@ -79,6 +79,19 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                   </Button>
                 </div>
               </div>
+              {slide.comingSoon == true && (
+                <div className="flex flex-col absolute top-3 left-3">
+                  <Button
+                    isDisabled
+                    as={Link}
+                    className="p-3 bg-default-foreground text-default"
+                    href={slide.buttonLink}
+                    radius="full"
+                  >
+                    coming soon
+                  </Button>
+                </div>
+              )}
             </div>
           ))}
         </div>
