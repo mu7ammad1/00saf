@@ -5,6 +5,7 @@ import Link from "next/link";
 import Index from "@/components/c";
 import { PinterestLayout } from "@/components/Dynamic";
 
+
 export default function Home() {
   return (
     <section className="flex flex-col items-center justify-center gap-10 py-8 md:py-10 w-full px-5 max-sm:px-2">

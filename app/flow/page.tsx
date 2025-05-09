@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 "use client";
+
 import { useState, useRef, useCallback, useEffect } from "react";
 import { title } from "@/components/primitives";
 
@@ -7,10 +8,15 @@ interface Position {
   x: number;
   y: number;
 }
+
 interface Node {
   id: string;
   position: Position;
+  label: string;
+  color: string;
+  icon: string;
 }
+
 interface Edge {
   from: string;
   to: string;
@@ -20,8 +26,34 @@ export default function FlowScreen() {
   const [zoom, setZoom] = useState(1);
   const [pan, setPan] = useState<Position>({ x: 0, y: 0 });
   const [nodes, setNodes] = useState<Node[]>([
-    { id: "1", position: { x: 50, y: 50 } },
-    { id: "2", position: { x: 700, y: 500 } },
+    {
+      id: "1",
+      position: { x: 50, y: 50 },
+      label: "Home Page",
+      color: "#3B82F6",
+      icon: "📄",
+    },
+    {
+      id: "2",
+      position: { x: 700, y: 500 },
+      label: "Submit",
+      color: "#10B981",
+      icon: "🔘",
+    },
+    {
+      id: "3",
+      position: { x: 400, y: 300 },
+      label: "Hero Image",
+      color: "#F59E0B",
+      icon: "🖼️",
+    },
+    {
+      id: "4",
+      position: { x: 250, y: 400 },
+      label: "Welcome Text",
+      color: "#8B5CF6",
+      icon: "🔤",
+    },
   ]);
   const [edges, setEdges] = useState<Edge[]>([{ from: "1", to: "2" }]);
   const [draggingId, setDraggingId] = useState<string | null>(null);
@@ -48,7 +80,7 @@ export default function FlowScreen() {
         setPanStart({ x: e.clientX - pan.x, y: e.clientY - pan.y });
       }
     },
-    [zoom, pan],
+    [zoom, pan]
   );
 
   const handleMouseMove = useCallback(
@@ -57,13 +89,17 @@ export default function FlowScreen() {
       const bounds = containerRef.current.getBoundingClientRect();
       const x = (e.clientX - bounds.left - pan.x) / zoom;
       const y = (e.clientY - bounds.top - pan.y) / zoom;
+
       setMousePosition({ x, y });
 
       if (draggingId) {
         const newX = x - offset.x;
         const newY = y - offset.y;
+
         setNodes((prev) =>
-          prev.map((n) => (n.id === draggingId ? { ...n, position: { x: newX, y: newY } } : n))
+          prev.map((n) =>
+            n.id === draggingId ? { ...n, position: { x: newX, y: newY } } : n
+          )
         );
       } else if (isPanning) {
         setPan({
@@ -72,7 +108,7 @@ export default function FlowScreen() {
         });
       }
     },
-    [draggingId, offset, isPanning, panStart, zoom, pan],
+    [draggingId, offset, isPanning, panStart, zoom, pan]
   );
 
   const handleMouseUp = useCallback(() => {
@@ -144,6 +180,9 @@ export default function FlowScreen() {
           x: Math.random() * 300,
           y: Math.random() * 300,
         },
+        label: "New Node",
+        color: "#6B7280",
+        icon: "➕",
       },
     ]);
   };
@@ -151,7 +190,9 @@ export default function FlowScreen() {
   const handleNodeRightClick = (e: React.MouseEvent, id: string) => {
     e.preventDefault();
     setNodes((prev) => prev.filter((n) => n.id !== id));
-    setEdges((prev) => prev.filter((edge) => edge.from !== id && edge.to !== id));
+    setEdges((prev) =>
+      prev.filter((edge) => edge.from !== id && edge.to !== id)
+    );
   };
 
   const handleConnectStart = (id: string) => {
@@ -159,7 +200,11 @@ export default function FlowScreen() {
   };
 
   const handleNodeMouseUp = (id: string) => {
-    if (connectingFrom && connectingFrom !== id) {
+    if (
+      connectingFrom &&
+      connectingFrom !== id &&
+      !edges.find((e) => e.from === connectingFrom && e.to === id)
+    ) {
       setEdges((prev) => [...prev, { from: connectingFrom, to: id }]);
     }
     setConnectingFrom(null);
@@ -180,7 +225,8 @@ export default function FlowScreen() {
         ref={containerRef}
         className="relative w-full max-w-[800px] h-[600px] border bg-gray-100 rounded overflow-hidden"
         onMouseDown={(e) => {
-          if ((e.target as HTMLElement).dataset.node !== "true") handleMouseDown(e);
+          if ((e.target as HTMLElement).dataset.node !== "true")
+            handleMouseDown(e);
         }}
         onWheel={handleWheel}
       >
@@ -196,43 +242,75 @@ export default function FlowScreen() {
             const tx = (to.position.x + size / 2) * zoom + pan.x;
             const ty = (to.position.y + size / 2) * zoom + pan.y;
 
-            return <line key={i} x1={fx} y1={fy} x2={tx} y2={ty} stroke="black" strokeWidth={2} />;
+            return (
+              <line
+                key={i}
+                stroke="black"
+                strokeWidth={2}
+                x1={fx}
+                x2={tx}
+                y1={fy}
+                y2={ty}
+              />
+            );
           })}
 
-          {connectingFrom && (() => {
-            const from = nodes.find((n) => n.id === connectingFrom);
-            if (!from) return null;
-            const size = 96;
-            const fx = (from.position.x + size / 2) * zoom + pan.x;
-            const fy = (from.position.y + size / 2) * zoom + pan.y;
-            const tx = mousePosition.x * zoom + pan.x;
-            const ty = mousePosition.y * zoom + pan.y;
-            return <line x1={fx} y1={fy} x2={tx} y2={ty} stroke="gray" strokeWidth={2} strokeDasharray="4 4" />;
-          })()}
+          {connectingFrom &&
+            (() => {
+              const from = nodes.find((n) => n.id === connectingFrom);
+              if (!from) return null;
+
+              const size = 96;
+              const fx = (from.position.x + size / 2) * zoom + pan.x;
+              const fy = (from.position.y + size / 2) * zoom + pan.y;
+              const tx = mousePosition.x * zoom + pan.x;
+              const ty = mousePosition.y * zoom + pan.y;
+
+              return (
+                <line
+                  stroke="gray"
+                  strokeDasharray="4 4"
+                  strokeWidth={2}
+                  x1={fx}
+                  x2={tx}
+                  y1={fy}
+                  y2={ty}
+                />
+              );
+            })()}
         </svg>
 
         <div
           className="w-full h-full origin-top-left"
-          style={{ transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})`, transformOrigin: "top left" }}
+          style={{
+            transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})`,
+            transformOrigin: "top left",
+          }}
         >
           {nodes.map((node) => (
             <div
               key={node.id}
-              className="absolute w-24 h-24 bg-blue-500 rounded-lg flex items-center justify-center"
+              className="absolute w-24 h-24 rounded-lg flex flex-col items-center justify-center text-white shadow-md"
               data-node="true"
-              style={{ transform: `translate(${node.position.x}px, ${node.position.y}px)` }}
+              style={{
+                transform: `translate(${node.position.x}px, ${node.position.y}px)`,
+                backgroundColor: node.color,
+              }}
+              onContextMenu={(e) => handleNodeRightClick(e, node.id)}
               onMouseDown={(e) => handleMouseDown(e, node.id)}
               onMouseUp={() => handleNodeMouseUp(node.id)}
-              onContextMenu={(e) => handleNodeRightClick(e, node.id)}
             >
+              <div className="text-2xl">{node.icon}</div>
+              <div className="text-sm text-center mt-1">{node.label}</div>
+
               <div
                 className="absolute top-0 right-0 w-5 h-5 bg-white border border-black rounded-full cursor-pointer"
-                onMouseDown={(e) => { 
-                  e.stopPropagation(); // منع الحدث من الانتقال إلى العقدة
+                title="Connect"
+                onMouseDown={(e) => {
+                  e.stopPropagation();
                   handleConnectStart(node.id);
                 }}
-                title="Connect"
-              ></div>
+              />
             </div>
           ))}
         </div>

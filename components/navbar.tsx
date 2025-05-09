@@ -11,9 +11,9 @@ import clsx from "clsx";
 import TabsComponenets from "./Tabs";
 import DrawerComponent from "./DrawerComponent";
 import { Logo } from "./icons";
+import Withch from "./Withch";
 
 import { siteConfig } from "@/config/site";
-import ModalSignIn from "@/components/modalSignIn";
 
 export const Navbar = () => {
   return (
@@ -33,7 +33,9 @@ export const Navbar = () => {
             href="/"
           >
             <Logo size={32} />
-            <p className="font-semibold text-xl text-inherit">Imagenfly</p>
+            <p className="font-semibold text-xl text-inherit hidden">
+              Imagenfly
+            </p>
           </NextLink>
         </NavbarBrand>
       </NavbarContent>
@@ -63,8 +65,7 @@ export const Navbar = () => {
       </NavbarContent>
 
       <NavbarContent className="basis-1" justify="end">
-        <ModalSignIn />
-        {/* <ThemeSwitch /> */}
+        <Withch />
       </NavbarContent>
     </HeroUINavbar>
   );

@@ -41,3 +41,24 @@ export async function signup(formData: FormData) {
 
   return { success: true };
 }
+
+export async function loginWithGoogle() {
+  const supabase = createClient();
+
+  const { data, error } = await (
+    await supabase
+  ).auth.signInWithOAuth({
+    provider: "google",
+    options: {
+      redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/auth/callback`,
+    },
+  });
+
+  if (error) {
+    console.error("Google login error:", error.message);
+
+    return revalidatePath("/login?error=" + encodeURIComponent(error.message));
+  }
+
+  return revalidatePath(data.url);
+}
