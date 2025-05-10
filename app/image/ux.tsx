@@ -89,8 +89,8 @@ export default function GenerateImageUx({ user }: { user: User | null }) {
             style: selectedValue,
             aspect_ratio: "9:16",
             seed,
-            amount: totalDeduction,
-            deduction_amount: totalDeduction / deductionPerImage,
+            amount: totalDeduction / deductionPerImage,
+            deduction_amount: totalDeduction,
           },
           {
             headers: {
