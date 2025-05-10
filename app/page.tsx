@@ -200,6 +200,9 @@ export default function Home() {
         <Card className="w-full max-w-full gap-0 shadow-none relative">
           <PinterestLayout
             src={[
+              "https://tjdtfpzcspfqgtoqpckp.supabase.co/storage/v1/object/public/imagenfly//generated_1746898498864.png",
+              "https://tjdtfpzcspfqgtoqpckp.supabase.co/storage/v1/object/public/imagenfly//generated_1746900451561.png",
+              "https://tjdtfpzcspfqgtoqpckp.supabase.co/storage/v1/object/public/imagenfly//generated_1746900407504.png",
               "https://tjdtfpzcspfqgtoqpckp.supabase.co/storage/v1/object/public/imagenfly//generated_1746649499221.png",
               "https://tjdtfpzcspfqgtoqpckp.supabase.co/storage/v1/object/public/imagenfly//generated_1746730708003.png",
               "https://tjdtfpzcspfqgtoqpckp.supabase.co/storage/v1/object/public/imagenfly//generated_1746732832565.png",
@@ -223,9 +226,6 @@ export default function Home() {
               "https://tjdtfpzcspfqgtoqpckp.supabase.co/storage/v1/object/public/imagenfly//generated_1746898610190.png",
               "https://tjdtfpzcspfqgtoqpckp.supabase.co/storage/v1/object/public/imagenfly//generated_1746898581389.png",
               "https://tjdtfpzcspfqgtoqpckp.supabase.co/storage/v1/object/public/imagenfly//generated_1746898557256.png",
-              "https://tjdtfpzcspfqgtoqpckp.supabase.co/storage/v1/object/public/imagenfly//generated_1746898498864.png",
-              "https://tjdtfpzcspfqgtoqpckp.supabase.co/storage/v1/object/public/imagenfly//generated_1746900451561.png",
-              "https://tjdtfpzcspfqgtoqpckp.supabase.co/storage/v1/object/public/imagenfly//generated_1746900407504.png",
             ]}
           />
           <div className="w-full absolute bottom-0 z-20 flex flex-col items-center justify-center">
