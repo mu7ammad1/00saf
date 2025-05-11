@@ -131,11 +131,16 @@ export default function GenerateImageUx({ user }: { user: User | null }) {
 
   return (
     <main className="w-full">
-      {totalDeduction}
+      {/* {totalDeduction} */}
 
       <Dropdown>
         <DropdownTrigger>
-          <Button className="capitalize" isDisabled={loading} variant="flat">
+          <Button
+            isIconOnly
+            className="capitalize"
+            isDisabled={loading}
+            variant="flat"
+          >
             <Settings2Icon size={16} />
           </Button>
         </DropdownTrigger>
