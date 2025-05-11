@@ -52,9 +52,17 @@ export default function GenerateImageUx({ user }: { user: User | null }) {
   const [generatedImages, setGeneratedImages] = useState<string[]>([]);
   const [prompt, setPrompt] = useState<string>("");
 
-  const Value_stye: Record<"realistic" | "anime" | "flux-schnell" | "flux-dev" | "flux-dev-fast" | "sdxl-1.0", number> = {
-    "realistic": 5,
-    "anime": 5,
+  const Value_stye: Record<
+    | "realistic"
+    | "anime"
+    | "flux-schnell"
+    | "flux-dev"
+    | "flux-dev-fast"
+    | "sdxl-1.0",
+    number
+  > = {
+    realistic: 5,
+    anime: 5,
     "flux-schnell": 5,
     "flux-dev": 10,
     "flux-dev-fast": 5,
@@ -79,7 +87,6 @@ export default function GenerateImageUx({ user }: { user: User | null }) {
     try {
       setLoading(true);
 
-
       const requests = seeds.map((seed) =>
         axios.post(
           "https://tjdtfpzcspfqgtoqpckp.supabase.co/functions/v1/generate-image",
@@ -94,11 +101,12 @@ export default function GenerateImageUx({ user }: { user: User | null }) {
           },
           {
             headers: {
-              Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRqZHRmcHpjc3BmcWd0b3FwY2twIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDA0Njk5MzgsImV4cCI6MjA1NjA0NTkzOH0.H_Juj-_ZzN9wioDypNYj4-kvEXJhFP7zvz_6f2yjS0I",
+              Authorization:
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRqZHRmcHpjc3BmcWd0b3FwY2twIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDA0Njk5MzgsImV4cCI6MjA1NjA0NTkzOH0.H_Juj-_ZzN9wioDypNYj4-kvEXJhFP7zvz_6f2yjS0I",
               "Content-Type": "application/json",
             },
           },
-        )
+        ),
       );
 
       const responses = await Promise.all(requests);
@@ -124,15 +132,81 @@ export default function GenerateImageUx({ user }: { user: User | null }) {
   return (
     <main className="w-full">
       {totalDeduction}
+
       <Dropdown>
         <DropdownTrigger>
-          <Button
-            isIconOnly
-            className="capitalize"
-            isDisabled={loading}
-            variant="flat"
-          >
+          <Button className="capitalize" isDisabled={loading} variant="flat">
             <Settings2Icon size={16} />
+          </Button>
+        </DropdownTrigger>
+        <DropdownMenu
+          disallowEmptySelection
+          aria-label="Single selection example"
+          className="w-auto"
+          selectedKeys={selectedKeys}
+          selectionMode="single"
+          variant="flat"
+          onSelectionChange={(keys) =>
+            setSelectedKeys(new Set(Array.from(keys).map(String)))
+          }
+        >
+          <DropdownItem
+            key="Imagenfly"
+            description="Generate images full of life"
+            isReadOnly={loading}
+          >
+            imagenFly
+          </DropdownItem>
+          <DropdownItem
+            key="realistic"
+            description="Create a new file"
+            isReadOnly={loading}
+          >
+            Realistic
+          </DropdownItem>
+          <DropdownItem
+            key="anime"
+            description="Create a new file"
+            isReadOnly={loading}
+          >
+            Anime
+          </DropdownItem>
+
+          <DropdownItem
+            key="flux-schnell"
+            description="Create a new file"
+            isReadOnly={loading}
+          >
+            Flux schnell
+          </DropdownItem>
+          <DropdownItem
+            key="flux-dev"
+            description="Create a new file"
+            isReadOnly={loading}
+          >
+            Flux dev
+          </DropdownItem>
+          <DropdownItem
+            key="flux-dev-fast"
+            description="Create a new file"
+            isReadOnly={loading}
+          >
+            Flux Dev Fast
+          </DropdownItem>
+          <DropdownItem
+            key="sdxl-1.0"
+            description="Create a new file"
+            isReadOnly={loading}
+          >
+            SDXL
+          </DropdownItem>
+        </DropdownMenu>
+      </Dropdown>
+
+      <Dropdown>
+        <DropdownTrigger>
+          <Button className="capitalize" isDisabled={loading} variant="flat">
+            selectedKeys
           </Button>
         </DropdownTrigger>
         <DropdownMenu
