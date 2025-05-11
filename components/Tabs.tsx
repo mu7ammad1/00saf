@@ -5,6 +5,7 @@ import {
   Popover,
   PopoverTrigger,
   PopoverContent,
+  Link,
 } from "@heroui/react";
 import { usePathname } from "next/navigation";
 import { Listbox, ListboxItem, cn } from "@heroui/react";
@@ -16,10 +17,10 @@ export default function TabsComponenets() {
 
   return (
     <ButtonGroup className="hidden sm:flex" radius="lg" variant="flat">
-      <Button color={"default"}>image</Button>
-      <Button color={"default"}>Videos</Button>
-      <Button color={"default"}>Edit</Button>
-      <Button color={"default"}>Enhance</Button>
+      <Button color={"default"} as={Link} href="/image">image</Button>
+      <Button color={"default"} as={Link} href="/video">Videos</Button>
+      <Button color={"default"} as={Link} href="/edit">Edit</Button>
+      <Button color={"default"} as={Link} href="/enhance">Enhance</Button>
       <Popover color="default" offset={5} placement="bottom">
         <PopoverTrigger>
           <Button isIconOnly>
