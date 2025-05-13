@@ -5,6 +5,7 @@ import { Link } from "@heroui/link";
 import DropNav from "./dropNav";
 
 import { createClient } from "@/utils/supabase/server";
+import Test from "./test";
 
 export default async function Withch() {
   const supabase = await createClient();
@@ -26,7 +27,8 @@ export default async function Withch() {
           Sign in
         </Button>
       ) : (
-        <div className="flex items-center gap-4">
+        <div className="flex justify-center items-center gap-4">
+          <Test targetUserId={profiles?.id} />
           <DropNav profiles={profiles} />
         </div>
       )}

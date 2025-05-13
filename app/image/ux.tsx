@@ -69,7 +69,7 @@ export default function GenerateImageUx({ user }: { user: User | null }) {
     "sdxl-1.0": 1,
   };
   const [selectedKeys, setSelectedKeys] = useState<Set<string>>(
-    new Set(["realistic"]),
+    new Set(["flux-dev"]),
   );
 
   const selectedValue = React.useMemo(
@@ -116,7 +116,7 @@ export default function GenerateImageUx({ user }: { user: User | null }) {
         .filter(Boolean);
 
       if (newImages.length > 0) {
-        setGeneratedImages((prev) => [...prev, ...newImages]);
+        setGeneratedImages((prev) => [...newImages, ...prev]);
       }
     } catch (error: any) {
       console.error(
@@ -132,151 +132,163 @@ export default function GenerateImageUx({ user }: { user: User | null }) {
   return (
     <main className="w-full">
       {/* {totalDeduction} */}
-
-      <Dropdown>
-        <DropdownTrigger>
-          <Button
-            isIconOnly
-            className="capitalize"
-            isDisabled={loading}
+      <div className="flex items-center justify-between max-w-min mx-auto gap-3">
+        <Dropdown>
+          <DropdownTrigger>
+            <Button
+              className="capitalize"
+              isDisabled={loading}
+              variant="bordered"
+            >
+              {selectedValue.replace(/-/g, " ")}
+            </Button>
+          </DropdownTrigger>
+          <DropdownMenu
+            disallowEmptySelection
+            aria-label="Single selection example"
+            className="w-72"
+            selectedKeys={selectedKeys}
+            selectionMode="single"
             variant="flat"
+            onSelectionChange={(keys) =>
+              setSelectedKeys(new Set(Array.from(keys).map(String)))
+            }
           >
-            <Settings2Icon size={16} />
-          </Button>
-        </DropdownTrigger>
-        <DropdownMenu
-          disallowEmptySelection
-          aria-label="Single selection example"
-          className="w-auto"
-          selectedKeys={selectedKeys}
-          selectionMode="single"
-          variant="flat"
-          onSelectionChange={(keys) =>
-            setSelectedKeys(new Set(Array.from(keys).map(String)))
-          }
-        >
-          <DropdownItem
-            key="Imagenfly"
-            description="Generate images full of life"
-            isReadOnly={loading}
-          >
-            imagenFly
-          </DropdownItem>
-          <DropdownItem
-            key="realistic"
-            description="Create a new file"
-            isReadOnly={loading}
-          >
-            Realistic
-          </DropdownItem>
-          <DropdownItem
-            key="anime"
-            description="Create a new file"
-            isReadOnly={loading}
-          >
-            Anime
-          </DropdownItem>
+            <DropdownItem
+              key="Imagenfly V2"
+              description="Generate images full of life"
+              isReadOnly={loading}
+            >
+              imagenFly V2
+            </DropdownItem>
+            <DropdownItem
+              key="Imagenfly V1"
+              description="Generate images full of life"
+              isReadOnly={loading}
+            >
+              imagenFly V1
+            </DropdownItem>
+            <DropdownItem
+              key="realistic"
+              description="Create a new file"
+              isReadOnly={loading}
+            >
+              Realistic
+            </DropdownItem>
+            <DropdownItem
+              key="anime"
+              description="Create a new file"
+              isReadOnly={loading}
+            >
+              Anime
+            </DropdownItem>
 
-          <DropdownItem
-            key="flux-schnell"
-            description="Create a new file"
-            isReadOnly={loading}
-          >
-            Flux schnell
-          </DropdownItem>
-          <DropdownItem
-            key="flux-dev"
-            description="Create a new file"
-            isReadOnly={loading}
-          >
-            Flux dev
-          </DropdownItem>
-          <DropdownItem
-            key="flux-dev-fast"
-            description="Create a new file"
-            isReadOnly={loading}
-          >
-            Flux Dev Fast
-          </DropdownItem>
-          <DropdownItem
-            key="sdxl-1.0"
-            description="Create a new file"
-            isReadOnly={loading}
-          >
-            SDXL
-          </DropdownItem>
-        </DropdownMenu>
-      </Dropdown>
+            <DropdownItem
+              key="flux-schnell"
+              description="Create a new file"
+              isReadOnly={loading}
+            >
+              Flux schnell
+            </DropdownItem>
+            <DropdownItem
+              key="flux-dev"
+              description="Create a new file"
+              isReadOnly={loading}
+            >
+              Flux dev
+            </DropdownItem>
+            <DropdownItem
+              key="flux-dev-fast"
+              description="Create a new file"
+              isReadOnly={loading}
+            >
+              Flux Dev Fast
+            </DropdownItem>
+            <DropdownItem
+              key="sdxl-1.0"
+              description="Create a new file"
+              isReadOnly={loading}
+            >
+              SDXL
+            </DropdownItem>
+          </DropdownMenu>
+        </Dropdown>
 
-      <Dropdown>
-        <DropdownTrigger>
-          <Button className="capitalize" isDisabled={loading} variant="flat">
-            selectedKeys
-          </Button>
-        </DropdownTrigger>
-        <DropdownMenu
-          disallowEmptySelection
-          aria-label="Single selection example"
-          className="w-auto"
-          selectedKeys={selectedKeys}
-          selectionMode="single"
-          variant="flat"
-          onSelectionChange={(keys) =>
-            setSelectedKeys(new Set(Array.from(keys).map(String)))
-          }
-        >
-          <DropdownItem
-            key="Imagenfly"
-            description="Generate images full of life"
-            isReadOnly={loading}
+        <Dropdown>
+          <DropdownTrigger>
+            <Button
+              isIconOnly
+              className="capitalize"
+              isDisabled={loading}
+              variant="bordered"
+            >
+              <Settings2Icon size={16} />
+            </Button>
+          </DropdownTrigger>
+          <DropdownMenu
+            disallowEmptySelection
+            aria-label="Single selection example"
+            className="w-auto"
+            selectedKeys={selectedKeys}
+            selectionMode="single"
+            variant="flat"
+            onSelectionChange={(keys) =>
+              setSelectedKeys(new Set(Array.from(keys).map(String)))
+            }
           >
-            imagenFly
-          </DropdownItem>
-          <DropdownItem
-            key="realistic"
-            description="Create a new file"
-            isReadOnly={loading}
-          >
-            Realistic
-          </DropdownItem>
-          <DropdownItem
-            key="anime"
-            description="Create a new file"
-            isReadOnly={loading}
-          >
-            Anime
-          </DropdownItem>
+            <DropdownItem
+              key="Imagenfly"
+              description="Generate images full of life"
+              isReadOnly={loading}
+            >
+              imagenFly
+            </DropdownItem>
+            <DropdownItem
+              key="realistic"
+              description="Create a new file"
+              isReadOnly={loading}
+            >
+              Realistic
+            </DropdownItem>
+            <DropdownItem
+              key="anime"
+              description="Create a new file"
+              isReadOnly={loading}
+            >
+              Anime
+            </DropdownItem>
 
-          <DropdownItem
-            key="flux-schnell"
-            description="Create a new file"
-            isReadOnly={loading}
-          >
-            Flux schnell
-          </DropdownItem>
-          <DropdownItem
-            key="flux-dev"
-            description="Create a new file"
-            isReadOnly={loading}
-          >
-            Flux dev
-          </DropdownItem>
-          <DropdownItem
-            key="flux-dev-fast"
-            description="Create a new file"
-            isReadOnly={loading}
-          >
-            Flux Dev Fast
-          </DropdownItem>
-          <DropdownItem
-            key="sdxl-1.0"
-            description="Create a new file"
-            isReadOnly={loading}
-          >
-            SDXL
-          </DropdownItem>
-        </DropdownMenu>
-      </Dropdown>
+            <DropdownItem
+              key="flux-schnell"
+              description="Create a new file"
+              isReadOnly={loading}
+            >
+              Flux schnell
+            </DropdownItem>
+            <DropdownItem
+              key="flux-dev"
+              description="Create a new file"
+              isReadOnly={loading}
+            >
+              Flux dev
+            </DropdownItem>
+            <DropdownItem
+              key="flux-dev-fast"
+              description="Create a new file"
+              isReadOnly={loading}
+            >
+              Flux Dev Fast
+            </DropdownItem>
+            <DropdownItem
+              key="sdxl-1.0"
+              description="Create a new file"
+              isReadOnly={loading}
+            >
+              SDXL
+            </DropdownItem>
+          </DropdownMenu>
+        </Dropdown>
+      </div>
       {generatedImages.length == 0 && (
         <section className="max-w-md mx-auto flex flex-col items-center justify-center gap-4 py-8 md:py-10">
           <div className="flex justify-center *:rounded-md mb-10 *:*:size-40 *:*:max-sm:h-32 *:*:object-cover *:*:border-4">
@@ -298,7 +310,7 @@ export default function GenerateImageUx({ user }: { user: User | null }) {
         </section>
       )}
       {generatedImages.length > 0 && (
-        <section className="mb-32 mt-10 w-full">
+        <section className="mb-32 mt-10 w-full flex-row-reverse">
           <Aple src={generatedImages} />
         </section>
       )}

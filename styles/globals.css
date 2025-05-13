@@ -12,89 +12,6 @@
   font-variation-settings: "wdth" 300;
 }
 
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-.gradient {
-  background: linear-gradient(
-    -45deg,
-    #ff5770,
-    #e4428d,
-    #c42da8,
-    #9e16c3,
-    #6501de,
-    #9e16c3,
-    #c42da8,
-    #e4428d,
-    #ff5770
-  );
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
-}
-
-@keyframes gradientAnimation {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-.animate-gradient {
-  background-size: 200% 200%;
-  animation: gradientAnimation 3s ease infinite;
-}
-
-.box {
-  position: relative;
-}
-.box::after {
-  position: absolute;
-  content: "";
-  top: 20px;
-  left: 0;
-  right: 0;
-  z-index: -1;
-  height: 100%;
-  width: 100%;
-  transform: scale(0.8) translateZ(1);
-  filter: blur(15px);
-  background: linear-gradient(
-    to left,
-    #ff5770,
-    #e4428d,
-    #c42da8,
-    #9e16c3,
-    #6501de,
-    #9e16c3,
-    #c42da8,
-    #e4428d,
-    #ff5770
-  );
-  background-size: 200% 200%;
-  animation: animateGlow 1.25s linear infinite;
-}
-
-@keyframes animateGlow {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 200% 50%;
-  }
-}
 
 @layer base {
   :root {
@@ -169,52 +86,10 @@
   }
 }
 
-@layer base {
-  * {
-    border-color: hsl(var(--border));
-  }
-  body {
-    @apply bg-background text-foreground;
-    box-sizing: border-box;
-    margin: 0;
-  }
-}
-
 .nodrag {
   pointer-events: auto;
 }
-body
-  > main
-  > div.w-full.flex.flex-col.justify-normal.items-center.max-w-screen-xl.min-h-screen.p-3
-  > div
-  > div
-  > div.react-flow__panel.react-flow__attribution.top.right {
-  display: none;
-}
 
-div.react-flow__handle.react-flow__handle-right.nodrag.nopan.source.connectable.connectablestart.connectableend.connectionindicator {
-  width: 0px !important;
-  height: 0px !important;
-  min-width: 0px !important;
-  min-height: 0px !important;
-  border: 0px solid #5134f1 !important;
-  background-color: #5134f1 !important;
-  content: "" !important;
-}
-
-div.react-flow__handle.react-flow__handle-left.nodrag.nopan.target.connectable.connectablestart.connectableend.connectionindicator {
-  width: 0px !important;
-  height: 0px !important;
-  min-width: 0px !important;
-  min-height: 0px !important;
-  border: 0px solid #f134c2 !important;
-  background-color: #f134c2 !important;
-  content: "" !important;
-}
-
-/* @import url('./xy-theme.css'); */
-
-/* xyflow theme files. Delete these to start from our base */
 
 .react-flow {
   /* Custom Variables */
@@ -227,12 +102,11 @@ div.react-flow__handle.react-flow__handle-left.nodrag.nopan.target.connectable.c
   --xy-node-border-default: 1px solid #5134f1;
 
   --xy-node-boxshadow-default:
-    0px 3.54px 4.55px 0px #00000005, 0px 3.54px 4.55px 0px #0000000d,
-    0px 0.51px 1.01px 0px #0000001a;
+    0px 0px 0px 0px #00000005, 0px 0px 0px 0px #ffffff,
+    0px 0px 0px 0px #0000001a;
 
-  --xy-node-border-radius-default: 8px;
+  --xy-node-border-radius-default: "50px";
 
-  --xy-handle-background-color-default: #ffffff;
   --xy-handle-border-color-default: #5134f1;
 
   --xy-edge-label-color-default: #5134f1;
@@ -240,9 +114,9 @@ div.react-flow__handle.react-flow__handle-left.nodrag.nopan.target.connectable.c
 
 .react-flow.dark {
   --xy-node-boxshadow-default:
-    0px 3.54px 4.55px 0px #ffffff0d,
-    /* light shadow */ 0px 3.54px 4.55px 0px #da292921,
-    /* medium shadow */ 0px 0.51px 1.01px 0px #df0f0f33; /* smallest shadow */
+    0px 0px 0px 0px #ffffff0d,
+    light shadow 0px 0px 0px 0px #da292921,
+    0px 0px 0px 0px #df0f0f33; 
   --xy-theme-color-focus: #5134f1;
 }
 
@@ -265,7 +139,7 @@ div.react-flow__handle.react-flow__handle-left.nodrag.nopan.target.connectable.c
 }
 
 .react-flow__node.selectable:focus {
-  box-shadow: 0px 0px 0px 4px var(--xy-theme-color-focus);
+  box-shadow: 0px 0px 0px 0px var(--xy-theme-color-focus);
   border-color: #5134f1;
 }
 
@@ -276,7 +150,7 @@ div.react-flow__handle.react-flow__handle-left.nodrag.nopan.target.connectable.c
 .react-flow__node.selectable:hover,
 .react-flow__node.draggable:hover {
   border-color: #ffffff;
-  /* border-width: var(--accent); */
+  border-width: var(--accent);
 }
 
 .react-flow__node.selectable.selected {
@@ -311,14 +185,14 @@ div.react-flow__handle.react-flow__handle-left.nodrag.nopan.target.connectable.c
 }
 
 .react-flow__node-resizer {
-  border-radius: 0;
+  border-radius: 50px;
   border: none;
 }
 
 .react-flow__resize-control.handle {
   background-color: #ffffff;
   border-color: #9e86ed;
-  border-radius: 0;
+  border-radius: 50px;
   width: 5px;
   height: 5px;
 }
@@ -338,10 +212,9 @@ div.react-flow__handle.react-flow__handle-left.nodrag.nopan.target.connectable.c
 }
 
 .wrapper {
-  /* flex-grow: 1; */
+  flex-grow: 1;
   height: 100vh !important;
   width: 100% !important;
-  color: #5134f1;
 }
 .react-flow.touch-flow .react-flow__handle {
   width: 20px;
@@ -369,46 +242,10 @@ div.react-flow__handle.react-flow__handle-left.nodrag.nopan.target.connectable.c
   animation: bounce 1600ms infinite ease-in;
 }
 
-.text-updater-node {
-  height: 50px;
-  border: 1px solid #eee;
-  padding: 5px;
-  border-radius: 5px;
-  background: white;
-}
-
 .text-updater-node label {
   display: block;
-  color: #777;
   font-size: 12px;
 }
-
-.hhh {
-  display: none !important;
-}
-
-.im {
-  background-image: url("/assets/images/videoframe_20483.png") !important;
-  background-size: "contain" !important;
-  background-repeat: "auto" !important;
-  background-position: "center" !important;
-  
-
-}
-
-
-.image-background {
-  background-image: url("/assets/images/0IOrVXfffIw7k85h-generated_image.jpg");
-  background-size: cover;
-  background-position: center;
-  padding: 10px;
-  border-radius: 8px;
-  height: 100px;
-  width: 100px;
-  /* display: block; */
-}
-
-
 
 body > main > div.w-full.flex.flex-col.justify-normal.items-center.max-w-screen-xl.min-h-screen.p-3 > main > div > div > div.react-flow__panel.react-flow__attribution.top.right > a {
   display: none;

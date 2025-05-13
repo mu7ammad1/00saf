@@ -4,8 +4,10 @@ import Link from "next/link";
 
 import Index from "@/components/c";
 import { PinterestLayout } from "@/components/Dynamic";
+import Test from "@/components/test";
 
-export default function Home() {
+export default async function Home() {
+
   return (
     <section className="flex flex-col items-center justify-center gap-10 py-8 md:py-10 w-full px-5 max-sm:px-2">
       <Index />
@@ -68,7 +70,7 @@ export default function Home() {
             </div>
             <div className="flex flex-col items-start justify-center gap-0 w-full">
               <h3 className="text-lg font-medium flex w-full justify-start items-baseline text-start">
-                Generate video & Restyle
+                Generate video
               </h3>
               <p className="text-xs flex w-full justify-start items-baseline text-start line-clamp-1">
                 Generate videos and restyle them with ease

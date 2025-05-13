@@ -132,3 +132,37 @@ export const signOutAction = async () => {
   await supabase.auth.signOut();
   return redirect("/sign-in");
 };
+
+export const updateUserAction = async (formData: FormData) => {
+  const supabase = await createClient();
+  const user = await supabase.auth.getUser();
+
+  if (!user.data.user) {
+    return encodedRedirect("error", "/profile", "User not found");
+  }
+
+  const { error } = await supabase.auth.updateUser({
+    data: {
+      name: formData.get("name")?.toString(),
+      bio: formData.get("bio")?.toString(),
+    },
+  });
+
+  if (error) {
+    return encodedRedirect("error", "/profile", error.message);
+  }
+
+  return encodedRedirect("success", "/profile", "Profile updated");
+};
+
+export const user = async () => {
+  const supabase = await createClient();
+  const { data, error } = await supabase.auth.getUser();
+
+  if (error) {
+    console.error(error);
+    return null;
+  }
+
+  return data.user;
+}

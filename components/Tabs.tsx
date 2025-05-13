@@ -13,15 +13,39 @@ import { Listbox, ListboxItem, cn } from "@heroui/react";
 export default function TabsComponenets() {
   const pathname = usePathname();
 
-  const selectedKey = pathname.split("/").pop() || "image";
+  const selectedKey = pathname.split("/").pop() || "/";
 
   return (
     <ButtonGroup className="hidden sm:flex" radius="lg" variant="flat">
-      <Button color={"default"} as={Link} href="/image">image</Button>
-      <Button color={"default"} as={Link} href="/video">Videos</Button>
-      <Button color={"default"} as={Link} href="/edit">Edit</Button>
-      <Button color={"default"} as={Link} href="/enhance">Enhance</Button>
-      <Popover color="default" offset={5} placement="bottom">
+      <Button
+        as={Link}
+        color={selectedKey !== "image" ? "default" : "primary"}
+        href="/image"
+      >
+        image
+      </Button>
+      <Button
+        as={Link}
+        color={selectedKey !== "video" ? "default" : "primary"}
+        href="/video"
+      >
+        Videos
+      </Button>
+      <Button
+        as={Link}
+        color={selectedKey !== "edit" ? "default" : "primary"}
+        href="/edit"
+      >
+        Edit
+      </Button>
+      <Button
+        as={Link}
+        color={selectedKey !== "enhance" ? "default" : "primary"}
+        href="/enhance"
+      >
+        Enhance
+      </Button>
+      <Popover color="default" offset={10} placement="bottom-end">
         <PopoverTrigger>
           <Button isIconOnly>
             <svg
@@ -44,7 +68,7 @@ export default function TabsComponenets() {
           <div className="p-0">
             <Listbox
               aria-label="User Menu"
-              className="p-0 gap-0 divide-y divide-default-300/50 dark:divide-default-100/80 bg-content1 max-w-[300px] w-60 overflow-visible shadow-small rounded-medium"
+              className="p-0 gap-0 divide-y divide-default-300/50 dark:divide-default-100/80 bg-content1 max-w-[365px] w-96 overflow-visible shadow-small rounded-medium"
               itemClasses={{
                 base: "px-3 first:rounded-t-medium last:rounded-b-medium rounded-none gap-3 h-12 data-[hover=true]:bg-default-100/80",
               }}
@@ -73,7 +97,7 @@ export default function TabsComponenets() {
                 Projects
               </ListboxItem>
               <ListboxItem
-                key="license"
+                key="license1"
                 endContent={
                   <span className="text-small text-default-400">MIT</span>
                 }
@@ -86,7 +110,7 @@ export default function TabsComponenets() {
                 License
               </ListboxItem>
               <ListboxItem
-                key="license"
+                key="license2"
                 endContent={
                   <span className="text-small text-default-400">MIT</span>
                 }
@@ -99,7 +123,7 @@ export default function TabsComponenets() {
                 License
               </ListboxItem>
               <ListboxItem
-                key="license"
+                key="license3"
                 endContent={
                   <span className="text-small text-default-400">MIT</span>
                 }

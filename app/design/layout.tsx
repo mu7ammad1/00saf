@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 export const metadata: Metadata = {
-  title: 'Design',
+  title: 'Projects',
   description: 'Create stunning images with Imagen Fly, the fastest AI image generator tool.',
 }
 

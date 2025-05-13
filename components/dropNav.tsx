@@ -24,7 +24,7 @@ export default function DropNav({ profiles }: { profiles: any }) {
           className="avatar image"
           color="default"
           src={profiles?.avatar_url}
-          style={{ height: 32, width: 32 }}
+          size="sm"
         />
       </DropdownTrigger>
       <DropdownMenu aria-label="Profile Actions" variant="flat">
