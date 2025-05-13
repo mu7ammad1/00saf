@@ -23,19 +23,19 @@ const defaultNodes = [
     id: "0",
     type: "baseNode",
     data: { label: "HELLO WORLD" },
-    position: { x: 0, y: 50 },
+    position: { x: 0, y: 0 },
   },
   {
     id: "1",
     type: "baseNode",
     data: { label: "HELLO WORLD" },
-    position: { x: 0, y: 50 },
+    position: { x: 0, y: 300 },
   },
   {
     id: "2",
     type: "baseNode",
     data: { label: "HELLO WORLD" },
-    position: { x: 0, y: 50 },
+    position: { x: 0, y: 600 },
   },
 ];
 
@@ -46,7 +46,7 @@ const BaseNode = ({ data }) => {
   };
 
   return (
-    <div className="p-4 border-none shadow-none">
+    <div className="p-4 min-w-[200px] min-h-[200px] border-none shadow-none">
       <NodeToolbar isVisible={data.toolbarVisible} position={Position.Bottom}>
         <Button variant="bordered">delete</Button>
       </NodeToolbar>
@@ -101,7 +101,7 @@ const AddNodeOnEdgeDrop = () => {
         edges={edges}
         fitViewOptions={{ padding: 2 }}
         maxZoom={5}
-        minZoom={0.5}
+        minZoom={2}
         nodeOrigin={[0.5, 0]}
         nodeTypes={nodeTypes}
         nodes={nodes}
