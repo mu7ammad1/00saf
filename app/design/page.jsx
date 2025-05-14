@@ -35,7 +35,7 @@ const defaultNodes = [
     id: "2",
     type: "baseNode",
     data: { label: "HELLO WORLD" },
-    position: { x: 220, y: 0 },
+    position: { x: 420, y: 0 },
   },
 ];
 
