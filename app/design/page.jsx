@@ -101,7 +101,7 @@ const AddNodeOnEdgeDrop = () => {
         edges={edges}
         fitViewOptions={{ padding: 2 }}
         maxZoom={5}
-        minZoom={2}
+        minZoom={0}
         nodeOrigin={[0.5, 0]}
         nodeTypes={nodeTypes}
         nodes={nodes}
