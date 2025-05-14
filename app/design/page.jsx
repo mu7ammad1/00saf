@@ -29,13 +29,13 @@ const defaultNodes = [
     id: "1",
     type: "baseNode",
     data: { label: "HELLO WORLD" },
-    position: { x: 0, y: 300 },
+    position: { x: 220, y: 0 },
   },
   {
     id: "2",
     type: "baseNode",
     data: { label: "HELLO WORLD" },
-    position: { x: 0, y: 600 },
+    position: { x: 220, y: 0 },
   },
 ];
 
@@ -101,7 +101,7 @@ const AddNodeOnEdgeDrop = () => {
         edges={edges}
         fitViewOptions={{ padding: 2 }}
         maxZoom={5}
-        minZoom={0}
+        minZoom={0.5}
         nodeOrigin={[0.5, 0]}
         nodeTypes={nodeTypes}
         nodes={nodes}
