@@ -1,5 +1,3 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable import/order */
 "use client";
 import React, { useRef } from "react";
 import {
