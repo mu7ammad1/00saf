@@ -1,11 +1,13 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from "react";
 import { Button } from "@heroui/button";
 import { Link } from "@heroui/link";
 
 import DropNav from "./dropNav";
+import Test from "./test";
 
 import { createClient } from "@/utils/supabase/server";
-import Test from "./test";
 
 export default async function Withch() {
   const supabase = await createClient();

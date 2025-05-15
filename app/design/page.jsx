@@ -1,3 +1,5 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable import/order */
 "use client";
 import React, { useRef } from "react";
 import {
@@ -6,19 +8,18 @@ import {
   useNodesState,
   useEdgesState,
   ReactFlowProvider,
-  Controls,
   Handle,
   Position,
   BackgroundVariant,
   NodeToolbar,
   NodeResizeControl,
-  ControlButton,
 } from "@xyflow/react";
+
 import { ZoomSlider } from "./zoom-slider";
 
 import "@xyflow/react/dist/style.css";
 import { Button } from "@heroui/react";
-import { LocateIcon, MagnetIcon } from "lucide-react";
+import { LocateIcon } from "lucide-react";
 
 const defaultNodes = [
   {
@@ -164,26 +165,3 @@ function Design() {
 }
 
 export default Design;
-
-function ResizeIcon() {
-  return (
-    <svg
-      fill="none"
-      height="20"
-      stroke="#ff0071"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="2"
-      style={{ position: "absolute", right: 5, bottom: 5 }}
-      viewBox="0 0 24 24"
-      width="20"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path d="M0 0h24v24H0z" fill="none" stroke="none" />
-      <polyline points="16 20 20 20 20 16" />
-      <line x1="14" x2="20" y1="14" y2="20" />
-      <polyline points="8 4 4 4 4 8" />
-      <line x1="4" x2="10" y1="4" y2="10" />
-    </svg>
-  );
-}
