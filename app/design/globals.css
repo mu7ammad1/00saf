@@ -105,7 +105,7 @@
     0px 0px 0px 0px #00000005, 0px 0px 0px 0px #ffffff,
     0px 0px 0px 0px #0000001a;
 
-  --xy-node-border-radius-default: "50px";
+  --xy-node-border-radius-default: 50px;
 
   --xy-handle-border-color-default: #5134f1;
 
@@ -203,7 +203,9 @@
 .react-flow__node-group {
   color: #5134f1 !important;
 }
-
+.block {
+  display: block !important;
+}
 #app {
   width: 100vw;
   height: 100vh;
@@ -212,7 +214,7 @@
 }
 
 .wrapper {
-  flex-grow: 1;
+  flex-grow: 1 !important;
   height: 100vh !important;
   width: 100% !important;
 }

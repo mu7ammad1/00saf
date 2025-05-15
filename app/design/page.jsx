@@ -12,68 +12,70 @@ import {
   BackgroundVariant,
   NodeToolbar,
   NodeResizeControl,
+  ControlButton,
 } from "@xyflow/react";
+import { ZoomSlider } from "./zoom-slider";
 
 import "@xyflow/react/dist/style.css";
 import { Button } from "@heroui/react";
-import { LocateIcon } from "lucide-react";
+import { LocateIcon, MagnetIcon } from "lucide-react";
 
 const defaultNodes = [
   {
     id: "0",
     type: "baseNode",
-    data: { label: "HELLO WORLD" },
+    data: { position: { width: 200, height: 200 }, label: "HELLO" },
     position: { x: 0, y: 0 },
   },
   {
     id: "1",
     type: "baseNode",
-    data: { label: "HELLO WORLD" },
+    data: { position: { width: 450, height: 300 }, label: "HELLO" },
     position: { x: 220, y: 0 },
   },
   {
     id: "2",
     type: "baseNode",
-    data: { label: "HELLO WORLD" },
-    position: { x: 420, y: 0 },
+    data: { position: { width: 100, height: 100 }, label: "HELLO" },
+    position: { x: 440, y: 0 },
   },
 ];
 
 const BaseNode = ({ data }) => {
-  const controlStyle = {
-    background: "transparent",
-    border: "none",
-  };
-
   return (
-    <div className="p-4 min-w-[200px] min-h-[200px] border-none shadow-none">
-      <NodeToolbar isVisible={data.toolbarVisible} position={Position.Bottom}>
+    <div
+      className={`p-0 m-0 rounded-md shadow-none border relative *:hover:block *:hidden`}
+      style={{
+        width: data.position.width,
+        height: data.position.height,
+        backgroundColor: "#fff",
+        border: "1px solid #E9EAED",
+      }}
+    >
+      <div className="absolute -top-10 w-full h-10 bg-white rounded-md border shadow-none">
+        000
+      </div>
+      <NodeToolbar isVisible={data.toolbarVisible} position={Position.Top}>
         <Button variant="bordered">delete</Button>
       </NodeToolbar>
-      {/* <NodeResizer
-        color="#ff0071"
-        isVisible={data.resizerVisible}
-        // keepAspectRatio={true}
-        lineStyle={{ stroke: "#ff0071", strokeWidth: 5 }}
-        shouldResize={() => true}
-        onResizeStart={() => {
-          console.log("resize start");
+      <NodeResizeControl
+        maxHeight={data.position.height}
+        maxWidth={data.position.width}
+        minHeight={data.position.height}
+        minWidth={data.position.width}
+        style={{
+          display: "none",
         }}
-        maxHeight={800}
-        maxWidth={800}
-        minHeight={50}
-        minWidth={50}
-      /> */}
-      <NodeResizeControl minHeight={200} minWidth={200} maxHeight={500} maxWidth={500} style={controlStyle}>
-        <ResizeIcon />
+      >
+        {/* <ResizeIcon /> */}
       </NodeResizeControl>
-
       <Handle
         position={Position.Top}
         style={{ display: "none" }}
         type="target"
       />
-      <div>{data.label}</div>
+      {/* {data.label} */}
+      {data.position.width} x {data.position.height}
       <Handle
         position={Position.Bottom}
         style={{ display: "none" }}
@@ -94,7 +96,10 @@ const AddNodeOnEdgeDrop = () => {
   };
 
   return (
-    <div ref={reactFlowWrapper} className="wrapper">
+    <div
+      ref={reactFlowWrapper}
+      className="wrapper rounded-md *:*:*:*:*:*:rounded-md"
+    >
       <ReactFlow
         fitView
         className="touch-flow"
@@ -110,7 +115,22 @@ const AddNodeOnEdgeDrop = () => {
         onNodesChange={onNodesChange}
       >
         <Background color="#E9EAED" variant={BackgroundVariant.Dots} />
-        <Controls />
+        <ZoomSlider position="bottom-right" />
+        {/* <ButtonHandle
+          type="target"
+          position={Position.Bottom}
+          showButton={!connectionInProgress}
+        >
+          <Button
+            onClick={onClick}
+            size="sm"
+            variant="secondary"
+            className="rounded-full"
+          >
+            <PlusCircle size={10} />
+          </Button>
+        </ButtonHandle> */}
+
         <section className="absolute top-20 left-5 z-10 p-2 flex w-14 h-auto bg-white border shadow-none rounded-full flex-col justify-center items-center gap-2">
           <Button isIconOnly radius="full" variant="flat">
             <LocateIcon size={16} />

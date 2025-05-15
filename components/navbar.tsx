@@ -14,7 +14,6 @@ import { Logo } from "./icons";
 import Withch from "./Withch";
 
 import { siteConfig } from "@/config/site";
-import Test from "./test";
 
 export const Navbar = () => {
   return (

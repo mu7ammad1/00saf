@@ -14,7 +14,7 @@
   display: flex;
   justify-content: start;
   touch-action: pan-y pinch-zoom;
-  margin-left: 1rem;
+  margin-left: 0rem;
 }
 .embla__slide {
   transform: translate3d(0, 0, 0);

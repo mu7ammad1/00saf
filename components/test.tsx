@@ -5,6 +5,7 @@ import { Loader2Icon } from "lucide-react";
 import { Button } from "@heroui/button";
 
 import { createClient } from "@/utils/supabase/client";
+import { Link } from "@heroui/link";
 
 export default function Test({ targetUserId }: { targetUserId: string }) {
   const supabase = createClient();
@@ -66,20 +67,18 @@ export default function Test({ targetUserId }: { targetUserId: string }) {
     };
   }, [targetUserId]);
 
-  return (
-    <div>
-      {loading ? (
-        <Loader2Icon className="h-5 w-5 animate-spin text-gray-500" />
-      ) : credit ? (
-        <Button
-          color="primary"
-          size="sm"
-          startContent={<p className="text-sm">{credit.credit}</p>}
-          variant="bordered"
-        >
-          UPGRADE
-        </Button>
-      ) : null}
-    </div>
-  );
+  return loading ? (
+    <Loader2Icon className="h-5 w-5 animate-spin text-gray-500" />
+  ) : credit ? (
+    <Button
+      color="primary"
+      size="sm"
+      startContent={<p className="text-sm">{credit.credit}</p>}
+      variant="bordered"
+      as={Link}
+      href={`/upgrade`}
+    >
+      UPGRADE
+    </Button>
+  ) : null;
 }
