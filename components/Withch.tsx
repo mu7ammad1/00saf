@@ -1,5 +1,3 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from "react";
 import { Button } from "@heroui/button";
 import { Link } from "@heroui/link";
