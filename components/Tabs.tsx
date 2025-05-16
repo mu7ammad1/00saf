@@ -45,6 +45,13 @@ export default function TabsComponenets() {
       >
         Enhance
       </Button>
+      <Button
+        as={Link}
+        color={selectedKey !== "design" ? "default" : "primary"}
+        href="/design"
+      >
+        Design
+      </Button>
       <Popover color="default" offset={10} placement="bottom-end">
         <PopoverTrigger>
           <Button isIconOnly>
