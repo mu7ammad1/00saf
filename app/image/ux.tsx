@@ -291,7 +291,7 @@ export default function GenerateImageUx({ user }: { user: User | null }) {
       </div>
       {generatedImages.length == 0 && (
         <section className="max-w-md mx-auto flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-          <div className="flex justify-center *:rounded-md mb-10 *:*:size-40 *:*:max-sm:h-32 *:*:object-cover *:*:border-4">
+          {/* <div className="flex justify-center *:rounded-md mb-10 *:*:size-40 *:*:max-sm:h-32 *:*:object-cover *:*:border-4 hidden">
             {[
               "-rotate-12 translate-x-10 z-0",
               "z-10",
@@ -305,7 +305,7 @@ export default function GenerateImageUx({ user }: { user: User | null }) {
                 src={`https://www.krea.ai/api/img?f=webp&i=https%3A%2F%2Ftest1-emgndhaqd0c9h2db.a01.azurefd.net%2Fimages%2F${["555e96f9-d469-4d8f-b1e3-f62da7fbad45", "3980f25a-3224-401b-a297-d3abdbbfefbf", "9e3d94e8-932c-4483-9ad2-41531d62163c"][idx]}.png`}
               />
             ))}
-          </div>
+          </div> */}
           <h1 className={title()}>Generate Image</h1>
         </section>
       )}
