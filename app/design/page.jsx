@@ -36,22 +36,10 @@ const defaultNodes = [
     id: "0",
     type: "baseNode",
     data: {
-      position: { aspectRatios: "Square" },
+      position: { aspectRatios: "Landscape" },
       label: "HELLO 0",
     },
-    position: { x: -150, y: 0 },
-  },
-  {
-    id: "1",
-    type: "baseNode",
-    data: { position: { aspectRatios: "Vertical" }, label: "HELLO" },
-    position: { x: 220, y: 0 },
-  },
-  {
-    id: "2",
-    type: "baseNode",
-    data: { position: { aspectRatios: "Landscape" }, label: "HELLO" },
-    position: { x: 730, y: 0 },
+    position: { x: 0, y: 0 },
   },
 ];
 
@@ -128,16 +116,26 @@ const BaseNode = ({ data, id, deleteNode }) => {
         }}
       />
       <Handle
-        position={Position.Top}
-        style={{ display: "none" }}
+        position={Position.Left}
+        className={`w-full h-10 bg-white/30 backdrop-blur-xl rounded-md border-none shadow-none flex items-center justify-end px-2 transition-all duration-300 ease-soft-spring ${
+          show
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 -translate-y-2 pointer-events-none"
+        } gap-2`}
+        onClick={(e) => e.stopPropagation()}
+        style={{ width: "2.5rem", height: "2.5rem", display: "none" }}
         type="target"
       />
       {data.label}
-      {/* {data.position.width} x {data.position.height} */}
-      {/* {(data.position.width * data.position.width) & data.position.width} */}
       <Handle
-        position={Position.Bottom}
-        style={{ display: "none" }}
+        position={Position.Right}
+        className={`w-full h-10 bg-white/30 backdrop-blur-xl rounded-md border-none shadow-none flex items-center justify-end px-2 transition-all duration-300 ease-soft-spring ${
+          show
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 -translate-y-2 pointer-events-none"
+        } gap-2`}
+        style={{ width: "2.5rem", height: "2.5rem", display: "none" }}
+        onClick={(e) => e.stopPropagation()}
         type="source"
       />
     </div>
