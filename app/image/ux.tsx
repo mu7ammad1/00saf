@@ -3,6 +3,7 @@ import React, { useCallback, useState } from "react";
 import axios from "axios";
 import { type User } from "@supabase/supabase-js";
 import { Textarea, Card, CardBody } from "@heroui/react";
+import { Popover, PopoverTrigger, PopoverContent } from "@heroui/react";
 import {
   Dropdown,
   DropdownTrigger,
@@ -51,6 +52,7 @@ export default function GenerateImageUx({ user }: { user: User | null }) {
   const [loading, setLoading] = useState(false);
   const [generatedImages, setGeneratedImages] = useState<string[]>([]);
   const [prompt, setPrompt] = useState<string>("");
+  // const [selectedValueislength, setSelectedKeysislength] = useState<Set<number>>(new Set([1]));
 
   const Value_stye: Record<
     | "realistic"
@@ -71,24 +73,25 @@ export default function GenerateImageUx({ user }: { user: User | null }) {
   const [selectedKeys, setSelectedKeys] = useState<Set<string>>(
     new Set(["flux-dev"]),
   );
-  const [selectedKeysislength, setSelectedKeysislength] = useState(
-    new Set([1]),
-  );
+  const [selectedValueislength, setSelectedKeysislength] = useState<Set<number>>(new Set([1]));
+
 
   const selectedValue = React.useMemo(
     () => Array.from(selectedKeys).join(", ").replace(/_/g, ""),
     [selectedKeys],
   );
-  const selectedValueislength = React.useMemo(
-    () => Array.from(selectedKeysislength).join(", ").replace(/_/g, ""),
-    [selectedKeysislength],
-  );
-  const numImages = Number(Array.from(selectedKeysislength)[0] || 1);
+  // const selectedValueislength = React.useMemo(
+  //   () => Array.from(selectedKeysislength).join(", ").replace(/_/g, ""),
+  //   [selectedKeysislength],
+  // );
+  const numImages = Number(Array.from(selectedValueislength) || 1);
   const seeds = Array.from({ length: numImages }, () =>
     Math.floor(Math.random() * 1e10).toString(),
   );
 
-  const styleKey = selectedValue.toLowerCase() as keyof typeof Value_stye; // حوّل القيمة للكيس الصحيح
+  const styleKey = selectedValue
+    .toLowerCase()
+    .replace(/\s/g, "") as keyof typeof Value_stye;
   const deductionPerImage = Value_stye[styleKey] ?? 5; // لو مش موجود نحط 5 افتراضياً
   const totalDeduction = deductionPerImage * seeds.length;
   const PostGeneration = useCallback(async () => {
@@ -165,7 +168,10 @@ export default function GenerateImageUx({ user }: { user: User | null }) {
           <Aple src={generatedImages} />
         </section>
       )}
-      <Card className="max-w-2xl w-full mx-auto fixed bottom-3 max-sm:bottom-0 left-0 right-0 z-10">
+      <Card
+        isBlurred
+        className="max-w-2xl w-full mx-auto fixed bottom-3 max-sm:bottom-0 left-0 right-0 z-10 bg-default-50 sha dow-none"
+      >
         <CardBody className="p-0 shadow-none">
           <Textarea
             className="max-w-full *:border-none *:outline-none *:ring-0 *:shadow-none"
@@ -189,14 +195,14 @@ export default function GenerateImageUx({ user }: { user: User | null }) {
             >
               <HeartIcon />
             </Button>
-
+            {selectedValueislength}
             <div className="flex flex-row-reverse items-center justify-between gap-2">
               <Dropdown>
                 <DropdownTrigger>
                   <Button
                     className="capitalize"
                     isDisabled={loading}
-                    variant="bordered"
+                    variant="flat"
                   >
                     {selectedValue.replace(/-/g, " ")}
                   </Button>
@@ -213,18 +219,25 @@ export default function GenerateImageUx({ user }: { user: User | null }) {
                   }
                 >
                   <DropdownItem
-                    key="Imagenfly V2"
-                    description="Generate images full of life"
+                    key="flux-dev"
+                    description="Create a new file"
                     isReadOnly={loading}
                   >
-                    imagenFly V2
+                    Flux dev
                   </DropdownItem>
                   <DropdownItem
-                    key="Imagenfly V1"
-                    description="Generate images full of life"
+                    key="stable-diffusion 3.5 ultra"
+                    description="Create a new file"
                     isReadOnly={loading}
                   >
-                    imagenFly V1
+                    Stable Diffusion 3.5 Ultra
+                  </DropdownItem>
+                  <DropdownItem
+                    key="stable-diffusion 3.5 medium"
+                    description="Create a new file"
+                    isReadOnly={loading}
+                  >
+                    Stable Diffusion 3.5 Medium
                   </DropdownItem>
                   <DropdownItem
                     key="realistic"
@@ -240,27 +253,12 @@ export default function GenerateImageUx({ user }: { user: User | null }) {
                   >
                     Anime
                   </DropdownItem>
-
                   <DropdownItem
                     key="flux-schnell"
                     description="Create a new file"
                     isReadOnly={loading}
                   >
                     Flux schnell
-                  </DropdownItem>
-                  <DropdownItem
-                    key="flux-dev"
-                    description="Create a new file"
-                    isReadOnly={loading}
-                  >
-                    Flux dev
-                  </DropdownItem>
-                  <DropdownItem
-                    key="flux-dev-fast"
-                    description="Create a new file"
-                    isReadOnly={loading}
-                  >
-                    Flux Dev Fast
                   </DropdownItem>
                   <DropdownItem
                     key="sdxl-1.0"
@@ -271,38 +269,35 @@ export default function GenerateImageUx({ user }: { user: User | null }) {
                   </DropdownItem>
                 </DropdownMenu>
               </Dropdown>
-              <Dropdown>
-                <DropdownTrigger>
+              <Popover placement="top">
+                <PopoverTrigger>
                   <Button
                     isIconOnly
                     className="flex justify-center items-center"
                     isDisabled={loading}
-                    variant="bordered"
+                    variant="flat"
                   >
                     <Settings2Icon absoluteStrokeWidth className="size-4" />
                   </Button>
-                </DropdownTrigger>
-                <DropdownMenu
-                  disallowEmptySelection
-                  aria-label="Number of images"
-                  className="w-auto"
-                  selectedKeys={selectedKeysislength}
-                  selectionMode="single"
-                  variant="flat"
-                  onSelectionChange={(keys) =>
-                    setSelectedKeysislength(new Set(Array.from(keys).map(Number)))
-                  }
-                >
-                  {[1, 2, 3, 4].map((num) => (
-                    <DropdownItem key={num} isReadOnly={loading}>
-                      {num}
-                    </DropdownItem>
-                  ))}
-                </DropdownMenu>
-              </Dropdown>
+                </PopoverTrigger>
+                <PopoverContent>
+                  <div className="px-1 py-2 w-full flex flex-col gap-2 text-2xl">
+                    {[1, 2, 3, 4].map((num) => (
+                      <Button
+                        key={num}
+                        radius="md"
+                        size="lg"
+                        variant={selectedValueislength.has(num) ? "flat" : "shadow"}
+                        onClick={() => setSelectedKeysislength(new Set([num]))}
+                      >
+                        {num}
+                      </Button>
+                    ))}
+                  </div>
+                </PopoverContent>
+              </Popover>
             </div>
           </div>
-
         </CardBody>
       </Card>
     </main>
