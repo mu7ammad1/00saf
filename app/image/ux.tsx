@@ -1,9 +1,9 @@
 "use client";
+
 import React, { useCallback, useState } from "react";
 import axios from "axios";
 import { type User } from "@supabase/supabase-js";
 import { Textarea, Card, CardBody } from "@heroui/react";
-import { Popover, PopoverTrigger, PopoverContent } from "@heroui/react";
 import {
   Dropdown,
   DropdownTrigger,
@@ -11,34 +11,11 @@ import {
   DropdownItem,
   Button,
 } from "@heroui/react";
-import { Settings2Icon } from "lucide-react";
+import { SendHorizontalIcon, Settings2Icon } from "lucide-react";
+import { Popover, PopoverTrigger, PopoverContent } from "@heroui/react";
 
 import { title } from "@/components/primitives";
 import { DynamicImage } from "@/components/DynamicImage";
-
-const HeartIcon = ({
-  fill = "currentColor",
-  filled = false,
-  size = 24,
-  ...props
-}) => (
-  <svg
-    fill={filled ? fill : "none"}
-    height={size}
-    viewBox="0 0 24 24"
-    width={size}
-    xmlns="http://www.w3.org/2000/svg"
-    {...props}
-  >
-    <path
-      d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"
-      stroke={fill}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={1}
-    />
-  </svg>
-);
 
 const Aple = ({ src }: { src: string[] }) => (
   <div className="w-auto h-auto flex flex-col items-center justify-center">
@@ -48,19 +25,36 @@ const Aple = ({ src }: { src: string[] }) => (
   </div>
 );
 
+const aspectRatios = [
+  "16:9",
+  "1:1",
+  "21:9",
+  "2:3",
+  "3:2",
+  "4:5",
+  "5:4",
+  "9:16",
+  "9:21",
+];
+
 export default function GenerateImageUx({ user }: { user: User | null }) {
   const [loading, setLoading] = useState(false);
   const [generatedImages, setGeneratedImages] = useState<string[]>([]);
   const [prompt, setPrompt] = useState<string>("");
-  // const [selectedValueislength, setSelectedKeysislength] = useState<Set<number>>(new Set([1]));
+  const [mediaType, setMediaType] = useState<
+    "image" | "video" | "3d" | "upscale"
+  >("image");
+  const [aspectRatio, setAspectRatio] = useState("1:1");
 
-  const Value_stye: Record<
+  const ValueModel: Record<
     | "realistic"
     | "anime"
     | "flux-schnell"
     | "flux-dev"
     | "flux-dev-fast"
-    | "sdxl-1.0",
+    | "sdxl-1.0"
+    | "stable-diffusion-3.5-ultra"
+    | "stable-diffusion-3.5-medium",
     number
   > = {
     realistic: 5,
@@ -69,46 +63,55 @@ export default function GenerateImageUx({ user }: { user: User | null }) {
     "flux-dev": 10,
     "flux-dev-fast": 5,
     "sdxl-1.0": 1,
+    "stable-diffusion-3.5-ultra": 8,
+    "stable-diffusion-3.5-medium": 5,
   };
+
   const [selectedKeys, setSelectedKeys] = useState<Set<string>>(
     new Set(["flux-dev"]),
   );
-  const [selectedValueislength, setSelectedKeysislength] = useState<Set<number>>(new Set([1]));
 
+  const [imageCount, setImageCount] = useState(1);
 
-  const selectedValue = React.useMemo(
+  const selectedModel = React.useMemo(
     () => Array.from(selectedKeys).join(", ").replace(/_/g, ""),
     [selectedKeys],
   );
-  // const selectedValueislength = React.useMemo(
-  //   () => Array.from(selectedKeysislength).join(", ").replace(/_/g, ""),
-  //   [selectedKeysislength],
-  // );
-  const numImages = Number(Array.from(selectedValueislength) || 1);
-  const seeds = Array.from({ length: numImages }, () =>
-    Math.floor(Math.random() * 1e10).toString(),
-  );
 
-  const styleKey = selectedValue
+  const styleKey = selectedModel
     .toLowerCase()
-    .replace(/\s/g, "") as keyof typeof Value_stye;
-  const deductionPerImage = Value_stye[styleKey] ?? 5; // لو مش موجود نحط 5 افتراضياً
-  const totalDeduction = deductionPerImage * seeds.length;
+    .replace(/\s/g, "") as keyof typeof ValueModel;
+
   const PostGeneration = useCallback(async () => {
     try {
       setLoading(true);
 
-      const requests = seeds.map((seed) =>
+      const numImages = imageCount;
+      const seeds = Array.from({ length: numImages }, () =>
+        Math.floor(Math.random() * 10_000).toString(),
+      );
+
+      const deductionPerImage = ValueModel[styleKey] ?? 5;
+      const modelMap: Record<string, string> = {
+        "stable-diffusion 3.5 ultra": "ultra",
+        "stable-diffusion 3.5 medium": "medium",
+      };
+
+      const generate = modelMap[selectedModel] || "generate-image";
+
+      const totalDeduction = deductionPerImage * seeds.length;
+
+      const request_image = seeds.map((seed) =>
         axios.post(
-          "https://tjdtfpzcspfqgtoqpckp.supabase.co/functions/v1/generate-image",
+          `https://tjdtfpzcspfqgtoqpckp.supabase.co/functions/v1/${generate}`,
           {
             user_id: user?.id,
             prompt,
-            style: selectedValue,
-            aspect_ratio: "9:16",
+            style: selectedModel,
+            aspect_ratio: aspectRatio,
             seed,
             amount: numImages,
-            deduction_amount: deductionPerImage * numImages,
+            deduction_amount: totalDeduction,
           },
           {
             headers: {
@@ -120,7 +123,7 @@ export default function GenerateImageUx({ user }: { user: User | null }) {
         ),
       );
 
-      const responses = await Promise.all(requests);
+      const responses = await Promise.all(request_image);
 
       const newImages = responses
         .map((res) => res.data?.publicUrl)
@@ -130,20 +133,15 @@ export default function GenerateImageUx({ user }: { user: User | null }) {
         setGeneratedImages((prev) => [...newImages, ...prev]);
       }
     } catch (error: any) {
-      // console.error(
-      //   "Error generating image:",
-      //   error.response?.data || error.message,
-      // );
       alert("Error generating image!");
     } finally {
       setLoading(false);
+      setPrompt("")
     }
-  }, [prompt, user, selectedKeys]);
+  }, [prompt, user, selectedKeys, imageCount, aspectRatio]);
 
   return (
     <main className="w-full">
-      {/* {selectedValueislength}={totalDeduction} */}
-      {/* {totalDeduction} */}
       {generatedImages.length == 0 && (
         <section className="max-w-md mx-auto flex items-center justify-center gap-4 py-8 md:py-10">
           <div className="w-16 h-16 bg-black/80 rounded-xl text-white flex justify-center items-center">
@@ -170,12 +168,14 @@ export default function GenerateImageUx({ user }: { user: User | null }) {
       )}
       <Card
         isBlurred
-        className="max-w-2xl w-full mx-auto fixed bottom-3 max-sm:bottom-0 left-0 right-0 z-10 bg-default-50 sha dow-none"
+        className={`max-w-3xl w-full mx-auto ${generatedImages.length > 0 ? "fixed bottom-2 max-sm:bottom-0 left-0 right-0" : "my-14"} z-10 sha dow-none`}
       >
         <CardBody className="p-0 shadow-none">
           <Textarea
-            className="max-w-full *:border-none *:outline-none *:ring-0 *:shadow-none"
+            className="max-w-full *:border-none *:outline-none *:ring-0 *:shadow-none *:overflow-hidden"
             isDisabled={loading}
+            maxRows={6}
+            minRows={1}
             placeholder="Generate new image with imagenFly..."
             size="lg"
             value={prompt}
@@ -193,18 +193,17 @@ export default function GenerateImageUx({ user }: { user: User | null }) {
               variant="flat"
               onClick={PostGeneration}
             >
-              <HeartIcon />
+              <SendHorizontalIcon size={22} />
             </Button>
-            {selectedValueislength}
             <div className="flex flex-row-reverse items-center justify-between gap-2">
               <Dropdown>
                 <DropdownTrigger>
                   <Button
                     className="capitalize"
                     isDisabled={loading}
-                    variant="flat"
+                    variant="light"
                   >
-                    {selectedValue.replace(/-/g, " ")}
+                    {selectedModel.replace(/-/g, " ")}
                   </Button>
                 </DropdownTrigger>
                 <DropdownMenu
@@ -220,79 +219,104 @@ export default function GenerateImageUx({ user }: { user: User | null }) {
                 >
                   <DropdownItem
                     key="flux-dev"
-                    description="Create a new file"
+                    description={"sdgas"}
                     isReadOnly={loading}
                   >
                     Flux dev
                   </DropdownItem>
                   <DropdownItem
                     key="stable-diffusion 3.5 ultra"
-                    description="Create a new file"
+                    description={"sdgas"}
                     isReadOnly={loading}
                   >
                     Stable Diffusion 3.5 Ultra
                   </DropdownItem>
                   <DropdownItem
                     key="stable-diffusion 3.5 medium"
-                    description="Create a new file"
+                    description={"sdgas"}
                     isReadOnly={loading}
                   >
                     Stable Diffusion 3.5 Medium
                   </DropdownItem>
                   <DropdownItem
                     key="realistic"
-                    description="Create a new file"
+                    description={"sdgas"}
                     isReadOnly={loading}
                   >
                     Realistic
                   </DropdownItem>
                   <DropdownItem
                     key="anime"
-                    description="Create a new file"
+                    description={"sdgas"}
                     isReadOnly={loading}
                   >
                     Anime
                   </DropdownItem>
                   <DropdownItem
                     key="flux-schnell"
-                    description="Create a new file"
+                    description={"sdgas"}
                     isReadOnly={loading}
                   >
                     Flux schnell
                   </DropdownItem>
                   <DropdownItem
                     key="sdxl-1.0"
-                    description="Create a new file"
+                    description={"sdgas"}
                     isReadOnly={loading}
                   >
                     SDXL
                   </DropdownItem>
                 </DropdownMenu>
               </Dropdown>
-              <Popover placement="top">
+              <Popover offset={10} placement="top">
                 <PopoverTrigger>
-                  <Button
-                    isIconOnly
-                    className="flex justify-center items-center"
-                    isDisabled={loading}
-                    variant="flat"
-                  >
-                    <Settings2Icon absoluteStrokeWidth className="size-4" />
+                  <Button isIconOnly isDisabled={loading} variant="light">
+                    <Settings2Icon
+                      absoluteStrokeWidth
+                      className="stroke-[2px]"
+                      size={18}
+                    />
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent>
-                  <div className="px-1 py-2 w-full flex flex-col gap-2 text-2xl">
-                    {[1, 2, 3, 4].map((num) => (
+                  <div className="px-1 py-2 w-72">
+                    <div className="text-small font-bold">
+                      <div className="flex flex-wrap gap-2 items-center">
+                        {aspectRatios.map((ratio) => (
+                          <Button
+                            key={ratio}
+                            isDisabled={loading}
+                            variant={aspectRatio === ratio ? "flat" : "light"}
+                            onClick={() => setAspectRatio(ratio)}
+                          >
+                            {ratio}
+                          </Button>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2 border rounded-full px-2 py-1 bg-white shadow-sm">
                       <Button
-                        key={num}
-                        radius="md"
-                        size="lg"
-                        variant={selectedValueislength.has(num) ? "flat" : "shadow"}
-                        onClick={() => setSelectedKeysislength(new Set([num]))}
+                        isIconOnly
+                        className="text-red-500 hover:text-red-600 text-xl px-2"
+                        disabled={loading || imageCount <= 1}
+                        onClick={() =>
+                          setImageCount((prev) => Math.max(1, prev - 1))
+                        }
                       >
-                        {num}
+                        -
                       </Button>
-                    ))}
+                      <span className="font-semibold min-w-[20px] text-center">
+                        {imageCount}
+                      </span>
+                      <Button
+                        isIconOnly
+                        className="text-green-500 hover:text-green-600 text-xl px-2"
+                        disabled={loading}
+                        onClick={() => setImageCount((prev) => prev + 1)}
+                      >
+                        +
+                      </Button>
+                    </div>
                   </div>
                 </PopoverContent>
               </Popover>
