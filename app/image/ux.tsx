@@ -136,15 +136,16 @@ export default function GenerateImageUx({ user }: { user: User | null }) {
       alert("Error generating image!");
     } finally {
       setLoading(false);
-      setPrompt("")
+      setPrompt("");
     }
   }, [prompt, user, selectedKeys, imageCount, aspectRatio]);
 
   return (
     <main className="w-full">
+      {mediaType == "3d" ? "111111" : "0000"}
       {generatedImages.length == 0 && (
         <section className="max-w-md mx-auto flex items-center justify-center gap-4 py-8 md:py-10">
-          <div className="w-16 h-16 bg-black/80 rounded-xl text-white flex justify-center items-center">
+          <div className="w-16 h-16 bg-teal-500/80 rounded-xl text-white flex justify-center items-center">
             <svg
               className="size-11"
               fill="currentColor"
@@ -158,7 +159,7 @@ export default function GenerateImageUx({ user }: { user: User | null }) {
               />
             </svg>
           </div>
-          <h1 className={title()}>Generate Image</h1>
+          <h1 className={title()}>Generate</h1>
         </section>
       )}
       {generatedImages.length > 0 && (
@@ -170,32 +171,93 @@ export default function GenerateImageUx({ user }: { user: User | null }) {
         isBlurred
         className={`max-w-3xl w-full mx-auto ${generatedImages.length > 0 ? "fixed bottom-2 max-sm:bottom-0 left-0 right-0" : "my-14"} z-10 sha dow-none`}
       >
-        <CardBody className="p-0 shadow-none">
+        <CardBody className="p-0 shadow-none backdrop-blur-lg bg-white/30">
           <Textarea
             className="max-w-full *:border-none *:outline-none *:ring-0 *:shadow-none *:overflow-hidden"
             isDisabled={loading}
             maxRows={6}
-            minRows={1}
-            placeholder="Generate new image with imagenFly..."
+            minRows={2}
+            placeholder={`${user !== null ? `Generate new image with imagenFly...` : "Login to generate image with imagenFly..."}`}
             size="lg"
             value={prompt}
             variant="bordered"
             onChange={(e) => setPrompt(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && !e.shiftKey) {
+                e.preventDefault();
+                PostGeneration();
+              }
+            }}
           />
           <div className="flex flex-row-reverse items-center justify-between max-w-full w-full mx-auto gap-3 p-2">
             <Button
               isIconOnly
               aria-label="Like"
+              className="bg-black/80 text-white hover:bg-black/90 active:bg-black/90"
               color="default"
+              isDisabled={user == null || prompt.length < 5}
               isLoading={loading}
               radius="full"
               size="md"
               variant="flat"
-              onClick={PostGeneration}
+              onPress={PostGeneration}
             >
               <SendHorizontalIcon size={22} />
             </Button>
             <div className="flex flex-row-reverse items-center justify-between gap-2">
+              <Dropdown>
+                <DropdownTrigger>
+                  <Button
+                    className="capitalize"
+                    isDisabled={loading}
+                    variant="light"
+                  >
+                    {mediaType}
+                  </Button>
+                </DropdownTrigger>
+                <DropdownMenu
+                  disallowEmptySelection
+                  aria-label="Single selection example"
+                  className="w-72"
+                  selectedKeys={mediaType}
+                  selectionMode="single"
+                  variant="flat"
+                  onSelectionChange={(keys) =>
+                    setMediaType(
+                      keys as unknown as "image" | "video" | "3d" | "upscale",
+                    )
+                  }
+                >
+                  <DropdownItem
+                    key="image"
+                    description={"sdgas"}
+                    isReadOnly={loading}
+                  >
+                    Image
+                  </DropdownItem>
+                  <DropdownItem
+                    key="video"
+                    description={"sdgas"}
+                    isReadOnly={loading}
+                  >
+                    Video
+                  </DropdownItem>
+                  <DropdownItem
+                    key="3d"
+                    description={"sdgas"}
+                    isReadOnly={loading}
+                  >
+                    3D
+                  </DropdownItem>
+                  <DropdownItem
+                    key="upscale"
+                    description={"sdgas"}
+                    isReadOnly={loading}
+                  >
+                    Upscale
+                  </DropdownItem>
+                </DropdownMenu>
+              </Dropdown>
               <Dropdown>
                 <DropdownTrigger>
                   <Button
@@ -270,12 +332,13 @@ export default function GenerateImageUx({ user }: { user: User | null }) {
               </Dropdown>
               <Popover offset={10} placement="top">
                 <PopoverTrigger>
-                  <Button isIconOnly isDisabled={loading} variant="light">
+                  <Button isDisabled={loading} variant="light">
                     <Settings2Icon
                       absoluteStrokeWidth
                       className="stroke-[2px]"
                       size={18}
                     />
+                    Tools
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent>

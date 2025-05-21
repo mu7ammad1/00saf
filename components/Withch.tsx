@@ -23,7 +23,7 @@ export default async function Withch() {
   return (
     <div>
       {!user ? (
-        <Button as={Link} color="default" href={"/sign-in"}>
+        <Button as={Link} color="default" href={"/sign-in"} radius="full" size="md">
           Sign in
         </Button>
       ) : (

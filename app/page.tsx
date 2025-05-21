@@ -5,13 +5,15 @@ import Link from "next/link";
 import Index from "@/components/c";
 import { PinterestLayout } from "@/components/Dynamic";
 import Test from "@/components/test";
+import GenerateImageScreen from "./image/page";
 
 export default async function Home() {
 
   return (
     <section className="flex flex-col items-center justify-center gap-10 py-8 md:py-10 w-full px-5 max-sm:px-2">
-      <Index />
-      <div className="flex flex-col items-center justify-center gap-4 w-full">
+      <GenerateImageScreen />
+      {/* <Index /> */}
+      {/* <div className="flex flex-col items-center justify-center gap-4 w-full">
         <Card className="w-full max-w-full gap-2 grid shadow-none justify-center items-center grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           <CardBody className="flex flex-row items-center justify-between w-full p-2 gap-4 rounded-xl">
             <div className="flex flex-col items-center justify-center w-10 h-10">
@@ -196,8 +198,8 @@ export default async function Home() {
             </Button>
           </CardBody>
         </Card>
-      </div>
-      <div className="flex flex-col gap-4 w-full">
+      </div> */}
+      {/* <div className="flex flex-col gap-4 w-full">
         <h3 className="flex justify-start w-full px-5">Inspiration</h3>
         <Card className="w-full max-w-full gap-0 shadow-none relative">
           <PinterestLayout
@@ -236,7 +238,7 @@ export default async function Home() {
           <div className="w-full h-screen bg-gradient-to-t to-white/0 from-white dark:to-black/0 dark:from-black absolute bottom-0 z-10" />
           <div className="w-full h-screen bg-gradient-to-t to-white/0 from-white dark:to-black/0 dark:from-black absolute bottom-0 z-10" />
         </Card>
-      </div>
+      </div> */}
     </section>
   );
 }
