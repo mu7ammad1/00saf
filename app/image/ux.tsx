@@ -142,7 +142,7 @@ export default function GenerateImageUx({ user }: { user: User | null }) {
 
   return (
     <main className="w-full">
-      {mediaType == "3d" ? "111111" : "0000"}
+      {/* {mediaType == "3d" ? "111111" : "0000"} */}
       {generatedImages.length == 0 && (
         <section className="max-w-md mx-auto flex items-center justify-center gap-4 py-8 md:py-10">
           <div className="w-16 h-16 bg-teal-500/80 rounded-xl text-white flex justify-center items-center">
