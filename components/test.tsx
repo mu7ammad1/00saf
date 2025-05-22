@@ -71,10 +71,10 @@ export default function Test({ targetUserId }: { targetUserId: string }) {
     <Loader2Icon className="h-5 w-5 animate-spin text-gray-500" />
   ) : credit ? (
     <Button
-      color="primary"
+      color="default"
       size="sm"
       startContent={<p className="text-sm">{credit.credit}</p>}
-      variant="bordered"
+      variant="flat"
       as={Link}
       href={`/upgrade`}
     >

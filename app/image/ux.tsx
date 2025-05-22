@@ -11,7 +11,7 @@ import {
   DropdownItem,
   Button,
 } from "@heroui/react";
-import { SendHorizontalIcon, Settings2Icon } from "lucide-react";
+import { SendHorizontalIcon, Settings2Icon, TvIcon } from "lucide-react";
 import { Popover, PopoverTrigger, PopoverContent } from "@heroui/react";
 
 import { title } from "@/components/primitives";
@@ -19,7 +19,10 @@ import { DynamicImage } from "@/components/DynamicImage";
 
 const Aple = ({ src }: { src: string[] }) => (
   <div className="w-auto h-auto flex flex-col items-center justify-center">
-    <div className="grid grid-cols-4 items-center justify-center mx-auto max-w-6xl gap-4 *:*:*:object-fill max-sm:grid-cols-2 max-md:grid-cols-3 max-lg:grid-cols-4">
+    <div
+      className="grid grid-cols-4 gap-4 max-w-6xl mx-auto items-center justify-center 
+      max-sm:grid-cols-2 max-md:grid-cols-3 max-lg:grid-cols-4"
+    >
       {src?.map((item, index) => <DynamicImage key={index} src={item} />)}
     </div>
   </div>
@@ -82,6 +85,12 @@ export default function GenerateImageUx({ user }: { user: User | null }) {
     .toLowerCase()
     .replace(/\s/g, "") as keyof typeof ValueModel;
 
+  const deductionPerImage = ValueModel[styleKey] ?? 5;
+  const modelMap: Record<string, string> = {
+    "stable-diffusion 3.5 ultra": "txt2img-ultra",
+    "stable-diffusion 3.5 medium": "txt2img-core",
+  };
+  const generate = modelMap[selectedModel] || "generate-image";
   const PostGeneration = useCallback(async () => {
     try {
       setLoading(true);
@@ -91,27 +100,25 @@ export default function GenerateImageUx({ user }: { user: User | null }) {
         Math.floor(Math.random() * 10_000).toString(),
       );
 
-      const deductionPerImage = ValueModel[styleKey] ?? 5;
-      const modelMap: Record<string, string> = {
-        "stable-diffusion 3.5 ultra": "ultra",
-        "stable-diffusion 3.5 medium": "medium",
-      };
-
-      const generate = modelMap[selectedModel] || "generate-image";
-
       const totalDeduction = deductionPerImage * seeds.length;
 
+      const styleKey = [
+        "stable-diffusion 3.5 medium",
+        "stable-diffusion 3.5 ultra",
+      ].includes(selectedModel)
+        ? "3d-model"
+        : selectedModel;
       const request_image = seeds.map((seed) =>
         axios.post(
           `https://tjdtfpzcspfqgtoqpckp.supabase.co/functions/v1/${generate}`,
           {
             user_id: user?.id,
             prompt,
-            style: selectedModel,
+            style: styleKey,
             aspect_ratio: aspectRatio,
             seed,
-            amount: numImages,
-            deduction_amount: totalDeduction,
+            deduct_user: numImages,
+            deduct: totalDeduction,
           },
           {
             headers: {
@@ -142,9 +149,8 @@ export default function GenerateImageUx({ user }: { user: User | null }) {
 
   return (
     <main className="w-full">
-      {/* {mediaType == "3d" ? "111111" : "0000"} */}
       {generatedImages.length == 0 && (
-        <section className="max-w-md mx-auto flex items-center justify-center gap-4 py-8 md:py-10">
+        <section className="max-w-full mx-auto flex items-center justify-center gap-4 py-8 md:py-10">
           <div className="w-16 h-16 bg-teal-500/80 rounded-xl text-white flex justify-center items-center">
             <svg
               className="size-11"
@@ -159,7 +165,7 @@ export default function GenerateImageUx({ user }: { user: User | null }) {
               />
             </svg>
           </div>
-          <h1 className={title()}>Generate</h1>
+          <h1 className={title()}>Generate any think</h1>
         </section>
       )}
       {generatedImages.length > 0 && (
@@ -182,12 +188,6 @@ export default function GenerateImageUx({ user }: { user: User | null }) {
             value={prompt}
             variant="bordered"
             onChange={(e) => setPrompt(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" && !e.shiftKey) {
-                e.preventDefault();
-                PostGeneration();
-              }
-            }}
           />
           <div className="flex flex-row-reverse items-center justify-between max-w-full w-full mx-auto gap-3 p-2">
             <Button
@@ -281,49 +281,62 @@ export default function GenerateImageUx({ user }: { user: User | null }) {
                 >
                   <DropdownItem
                     key="flux-dev"
-                    description={"sdgas"}
+                    description={
+                      "Flux development mode with advanced results and enhanced details."
+                    }
                     isReadOnly={loading}
+                    startContent={<TvIcon />}
                   >
                     Flux dev
                   </DropdownItem>
                   <DropdownItem
                     key="stable-diffusion 3.5 ultra"
-                    description={"sdgas"}
+                    description={"Top-tier quality with ultra-high detail."}
                     isReadOnly={loading}
                   >
                     Stable Diffusion 3.5 Ultra
                   </DropdownItem>
                   <DropdownItem
                     key="stable-diffusion 3.5 medium"
-                    description={"sdgas"}
+                    description={
+                      "Balanced generation between quality and performance."
+                    }
                     isReadOnly={loading}
                   >
                     Stable Diffusion 3.5 Medium
                   </DropdownItem>
                   <DropdownItem
                     key="realistic"
-                    description={"sdgas"}
+                    description={
+                      "High-quality realistic images with fine, natural details."
+                    }
                     isReadOnly={loading}
                   >
                     Realistic
                   </DropdownItem>
                   <DropdownItem
                     key="anime"
-                    description={"sdgas"}
+                    description={
+                      "Distinctive anime style with vibrant colors and clear lines."
+                    }
                     isReadOnly={loading}
                   >
                     Anime
                   </DropdownItem>
                   <DropdownItem
                     key="flux-schnell"
-                    description={"sdgas"}
+                    description={
+                      "Fast generation with medium quality, perfect for quick previews."
+                    }
                     isReadOnly={loading}
                   >
                     Flux schnell
                   </DropdownItem>
                   <DropdownItem
                     key="sdxl-1.0"
-                    description={"sdgas"}
+                    description={
+                      "SDXL model with improved detail and color accuracy."
+                    }
                     isReadOnly={loading}
                   >
                     SDXL

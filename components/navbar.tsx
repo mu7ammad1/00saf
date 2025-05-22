@@ -18,7 +18,6 @@ export const Navbar = () => {
       position="static"
       style={{ background: "#00000000", margin: "0 0 3rem 0" }}
     >
-      {/* <div className="flex items-center justify-center w-full h-full bg-white mt-4 px-3 rounded-full"> */}
 
       <NavbarContent className="basis-20" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-full">
@@ -46,7 +45,6 @@ export const Navbar = () => {
         <Withch />
       </NavbarContent>
 
-      {/* </div> */}
     </HeroUINavbar>
   );
 };
