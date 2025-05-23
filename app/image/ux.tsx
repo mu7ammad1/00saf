@@ -150,8 +150,8 @@ export default function GenerateImageUx({ user }: { user: User | null }) {
   return (
     <main className="w-full">
       {generatedImages.length == 0 && (
-        <section className="max-w-full mx-auto flex items-center justify-center gap-4 py-8 md:py-10">
-          <div className="w-16 h-16 bg-teal-500/80 rounded-xl text-white flex justify-center items-center">
+        <section className="max-w-full mx-auto flex items-center justify-center gap-4 py-5">
+          <div className="w-16 h-16 bg-teal-500/80 rounded-xl text-white flex justify-center items-center hidden">
             <svg
               className="size-11"
               fill="currentColor"
@@ -165,7 +165,7 @@ export default function GenerateImageUx({ user }: { user: User | null }) {
               />
             </svg>
           </div>
-          <h1 className={title()}>Generate any think</h1>
+          <h1 className={title()}>Generate image & Videos</h1>
         </section>
       )}
       {generatedImages.length > 0 && (
@@ -175,7 +175,7 @@ export default function GenerateImageUx({ user }: { user: User | null }) {
       )}
       <Card
         isBlurred
-        className={`max-w-3xl w-full mx-auto ${generatedImages.length > 0 ? "fixed bottom-2 max-sm:bottom-0 left-0 right-0" : "my-14"} z-10 sha dow-none`}
+        className={`max-w-3xl w-full mx-auto ${generatedImages.length > 0 ? "fixed bottom-2 max-sm:bottom-0 left-0 right-0" : "my-5"} z-10 sha dow-none max-sm:px-3`}
       >
         <CardBody className="p-0 shadow-none backdrop-blur-lg bg-white/30">
           <Textarea
@@ -400,6 +400,10 @@ export default function GenerateImageUx({ user }: { user: User | null }) {
           </div>
         </CardBody>
       </Card>
+      <div className="w-full gap-3 flex items-center justify-center">
+        <Button variant="flat" radius="full">Remove Background</Button>
+        <Button variant="flat" radius="full">Recolor image</Button>
+      </div>
     </main>
   );
 }

@@ -4,6 +4,9 @@ import GenerateImageUx from "./ux";
 
 import gradient from "@/assets/Free 04 Dark _ Light Color Gradients - Asylab.jpg";
 import { createClient } from "@/utils/supabase/server";
+import TabsComponenets from "@/components/Tabs";
+import { Button } from "@heroui/button";
+import { Card, CardBody } from "@heroui/react";
 
 export default async function GenerateImageScreen() {
   const supabase = await createClient();
@@ -25,7 +28,8 @@ export default async function GenerateImageScreen() {
         }}
       />
       <GenerateImageUx user={user} />
-      <div className="bg-white rounded-3xl p-5 pb-10 flex flex-col items-center justify-center w-full mt-40 mb-10">
+      <TabsComponenets />
+      <div className="bg-white rounded-3xl p-5 pb-10 flex flex-col items-center justify-center w-full mt-20 mb-10">
         <div className="text-2xl flex items-center gap-2 text-black w-full mb-5">
           <CableCarIcon />
           <span>Inspirations</span>
