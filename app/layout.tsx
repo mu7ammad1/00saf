@@ -51,7 +51,6 @@ export default function RootLayout({
       </body>
       <GoogleAnalytics
         key={"G-75SHPDXGW3"}
-        dataLayerName="G-75SHPDXGW3"
         gaId="G-75SHPDXGW3"
       />
     </html>
