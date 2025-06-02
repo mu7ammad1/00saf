@@ -49,7 +49,7 @@ export default function RootLayout({
           </div>
         </Providers>
       </body>
-      <GoogleAnalytics gaId="G-75SHPDXGW3" />
+      <GoogleAnalytics gaId={"G-16JBF32PXD"} />
     </html>
   );
 }
