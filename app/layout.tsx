@@ -1,5 +1,5 @@
 /* eslint-disable import/order */
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 
 import "@/styles/globals.css";
 import { Metadata, Viewport } from "next";
@@ -49,7 +49,8 @@ export default function RootLayout({
           </div>
         </Providers>
       </body>
-      <GoogleAnalytics gaId={"G-16JBF32PXD"} />
+      <GoogleTagManager gtmId={"G-16JBF32PXD"} />
+      {/* <GoogleAnalytics gaId={"G-16JBF32PXD"} /> */}
     </html>
   );
 }
