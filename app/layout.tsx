@@ -49,8 +49,7 @@ export default function RootLayout({
           </div>
         </Providers>
       </body>
-      <GoogleAnalytics key={"G-75SHPDXGW3"} gaId="G-75SHPDXGW3" />
-      <GoogleAnalytics key={"G-16JBF32PXD"} gaId="G-16JBF32PXD" />
+      <GoogleAnalytics gaId="G-75SHPDXGW3" />
     </html>
   );
 }
