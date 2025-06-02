@@ -49,8 +49,8 @@ export default function RootLayout({
           </div>
         </Providers>
       </body>
-      <GoogleTagManager gtmId={"G-16JBF32PXD"} />
-      {/* <GoogleAnalytics gaId={"G-16JBF32PXD"} /> */}
+      {/* <GoogleTagManager gtmId={"G-16JBF32PXD"} /> */}
+      <GoogleAnalytics gaId={"G-16JBF32PXD"} />
     </html>
   );
 }
